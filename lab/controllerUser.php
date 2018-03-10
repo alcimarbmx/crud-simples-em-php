@@ -1,0 +1,44 @@
+<?php
+include ('conexao.php');
+	//$conn = mysqli_connect("localhost", "root", "", "laboratorio") or die("Erro: ".mysqli_connect_error());
+	
+	//recebe valores do usuario
+	$nomeUser = $_REQUEST['nome'];
+	$codUser = $_REQUEST['matricula'];
+	$funUser = $_REQUEST['funcao'];
+
+	//recebe valores do laboratorio
+	/*
+	$nomeLab = $_POST['nome'];
+	$codLab = $_POST['codigo'];
+	*/
+	$btn = $_REQUEST['btn'];
+
+	$query = "";
+
+	switch ($btn) {
+		case "inserir":
+			$query = "INSERT INTO usuario (nome, matricula, funcao) VALUES ('$nomeUser', '$codUser', '$funUser')";
+			break;
+		case "deletar":
+			$query = "DELETE FROM usuario WHERE matricula='$codUser'";
+			break;
+		case "atualizar":
+			$query = "UPDATE  usuario SET nome = '$nomeUser', funcao = '$funUser' WHERE matricula = '$codUser'";
+			break;
+		$query = "SELECT * FROM usuario";
+			break;
+	}
+	$operacao = mysqli_query($conn, $query);
+
+	if($operacao){ 
+		?>
+		<script>alert("Operação bem sucedida!")</script>
+		<?php }else{ ?>
+		
+		<script>alert("Operação mal sucedida! Tente novamente.")</script>
+	<?php }
+	mysqli_close($conn);
+	header("refresh: 0; url=inicio.php");
+	?>
+	
