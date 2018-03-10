@@ -15,18 +15,19 @@ include ('conexao.php');
 	$btn = $_REQUEST['btn'];
 
 	$query = "";
-
+	$pag = "";
 	switch ($btn) {
 		case "inserir":
 			$query = "INSERT INTO usuario (nome, matricula, funcao) VALUES ('$nomeUser', '$codUser', '$funUser')";
+			$pag = "inserirUser";
 			break;
 		case "deletar":
 			$query = "DELETE FROM usuario WHERE matricula='$codUser'";
+			$pag = "listarUser";
 			break;
 		case "atualizar":
 			$query = "UPDATE  usuario SET nome = '$nomeUser', funcao = '$funUser' WHERE matricula = '$codUser'";
-			break;
-		$query = "SELECT * FROM usuario";
+			$pag = "listarUser";
 			break;
 	}
 	$operacao = mysqli_query($conn, $query);
@@ -39,6 +40,6 @@ include ('conexao.php');
 		<script>alert("Operação mal sucedida! Tente novamente.")</script>
 	<?php }
 	mysqli_close($conn);
-	header("refresh: 0; url=inicio.php");
+	header("refresh: 0; url=$pag.php");
 	?>
 	

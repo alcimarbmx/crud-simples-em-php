@@ -1,3 +1,4 @@
+<?php include('conexao.php'); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -10,8 +11,9 @@
 
     <title>Início</title>
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <script src="../assets/js/ie-emulation-modes-warning.js"></script>
+    <!--<link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <script src="../assets/js/ie-emulation-modes-warning.js"></script>-->
     <link href="carousel.css" rel="stylesheet">
   </head>
   <body>
@@ -56,39 +58,24 @@
 <hr class="featurette-divider">
        <div class="container"> 
 
-       <h2>Agendados</h2>      
+       <h2>Agendados (em construção)</h2>      
 <table class="table table-hover">
     <thead>
       <tr>
-        <th>Usuário</th>
-        <th>Laboratório</th>
-        <th>Data</th>
-        <th>Horários</th>
-        <th>Turno</th>
+        <th>Código</th>
+        <th>Laboratorio</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Usuário</td>
-        <td>Laboratório</td>
-        <td>Data</td>
-        <td>Horários</td>
-        <td>Turno</td>
-      </tr>
-      <tr>
-        <td>Usuário</td>
-        <td>Laboratório</td>
-        <td>Data</td>
-        <td>Horários</td>
-        <td>Turno</td>
-      </tr>
-      <tr>
-        <td>Usuário</td>
-        <td>Laboratório</td>
-        <td>Data</td>
-        <td>Horários</td>
-        <td>Turno</td>
-      </tr>
+      <?php  $query = "SELECT * FROM lab";
+             $res = mysqli_query($conn, $query);
+
+while($linha = mysqli_fetch_array($res)){
+  
+        echo "<tr><td>".$linha['codigo']."</td>";
+        echo "<td>".$linha['nome']."</td></tr>";
+    }
+    ?>
     </tbody>
   </table>
 	  </div>
@@ -105,7 +92,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../dist/js/bootstrap.min.js"></script>
-    <script src="../assets/js/vendor/holder.min.js"></script>
-    <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!--<script src="../assets/js/vendor/holder.min.js"></script>
+    <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>-->
   </body>
 </html>

@@ -10,8 +10,6 @@
 
     <title>Inserir usuário</title>
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-    <script src="../assets/js/ie-emulation-modes-warning.js"></script>
     <link href="carousel.css" rel="stylesheet">
   </head>
   <body>
@@ -33,7 +31,9 @@
                 <li><a href="inicio.php">Início</a></li>             
                 <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
+
                   <ul class="dropdown-menu">
+                    <li><a href="reservarLab.php">Reservar laboratório</a></li>
                     <li><a href="listarUser.php">Listar usuários</a></li>
                     <li><a href="inserirUser.php">Inserir  usuário</a></li>
                   </ul>
@@ -65,23 +65,16 @@
         <label for="funcao" class="only">Ocupação</label>
         <input type="text" name="funcao" id="funcao" class="form-control"  required><br>
 
-        <div class="btn-group btn-group-justified">
+    <div class="btn-group btn-group-justified">
       <div class="btn-group">
         <button class="btn btn-primary" type="submit" name="btn" value="inserir">
         <span class="glyphicon glyphicon-ok"></span>Inserir</button>
-
       </div>
-      <div class="btn-group">
-        <button class="btn btn-success" type="submit" name="btn" value="atualizar"><span class="glyphicon glyphicon-refresh"></span>Atualizar</button>
-      </div>
-      <div class="btn-group">
-        <button class="btn btn-danger" type="submit" name="btn" value="deletar"><span class="glyphicon glyphicon-remove"></span>Deletar</button>
-      </div>
-      </div>
-      </div>
-    </form>
-	  </div>
-      </div>
+    </div>
+  </div>
+</form>
+	</div>
+    </div>
 
     
 <hr class="featurette-divider">
@@ -95,7 +88,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../dist/js/bootstrap.min.js"></script>
-    <script src="../assets/js/vendor/holder.min.js"></script>
-    <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+    </body>
 </html>
