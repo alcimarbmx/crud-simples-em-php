@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../favicon.ico">
 
-    <title>Inserir usuário</title>
+    <title>Reservar laboratório</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -60,33 +60,11 @@
 
 <hr class="featurette-divider">
        <div class="container">       
-      <form class="form" method="post" action="">
+      <form class="form" method="post" action="#">
         
         <h2 class="form">Reservar laboratório</h2>
         <div class="container">
-        <label for="data" class="only">Data</label>
-        <input type="date" name="data" id="data" class="form-control" required autofocus><br>
-        
-        <label for="horario" class="only">Horários</label>
-        <div class="form-control">
-        <input type="checkbox" name="horario" value="1">1º primeiro
-        <input type="checkbox" name="horario" value="2">2º segundo
-        <input type="checkbox" name="horario" value="3">3º terceiro
-        <input type="checkbox" name="horario" value="4">4º quarto
-        <input type="checkbox" name="horario" value="5">5º quinto
-        <input type="checkbox" name="horario" value="6">6º sexto<br></div>
-
-        <label for="turno" class="only">Turno</label>
-        <select class="form-control" id="turno">
-
-          <option value=""></option>
-          <option value="Manhã">Manhã</option>
-          <option value="Tarde">Tarde</option>
-          <option value="Noite">Noite</option>
-        </select>
-      <br>
-
-       <label for="nome" class="only">Nome do usuário</label>
+        <label for="nome" class="only">Nome do usuário</label>
         <input type="text" name="nome" id="nome" class="form-control" required autofocus>
 
         <label for="matricula" class="only">Matrícula</label>
@@ -96,19 +74,48 @@
         <input type="text" name="nome" id="nome" class="form-control" required autofocus>
 
         <label for="codigo" class="only">Código</label>
-        <input type="number" name="codigo" id="codigo" class="form-control" required autofocus>
+        <input type="number" name="codigo" id="codigo" class="form-control" required autofocus><br>
 
+        <label for="data" class="only">Data</label>
+        <input type="date" name="data" id="data" class="form-control" required autofocus><br>
+        
+        <label for="horario" class="only">Horários</label>
+        <div class="form-control">
+        <div class="checkbox-inline">
+        <label class="checkbox-inline">
+        <input type="checkbox" name="horario" value="1">1º primeiro</label>
+        <label class="checkbox-inline">
+        <input type="checkbox" name="horario" value="2">2º segundo
+        </label>
+        <label class="checkbox-inline">
+        <input type="checkbox" name="horario" value="3">3º terceiro
+        </label>
+        <label class="checkbox-inline">
+        <input type="checkbox" name="horario" value="4">4º quarto
+        </label>
+        <label class="checkbox-inline">
+        <input type="checkbox" name="horario" value="5">5º quinto
+        </label>
+        <label class="checkbox-inline">
+        <input type="checkbox" name="horario" value="6">6º sexto</label>
+        </div>
+      </div>
+
+        <label for="turno" class="only">Turno</label>
+        <select class="form-control" id="turno">
+          <option value=""></option>
+          <option value="Manhã">Manhã</option>
+          <option value="Tarde">Tarde</option>
+          <option value="Noite">Noite</option>
+        </select>
+      <br>
+
+       
         <div class="btn-group btn-group-justified">
       <div class="btn-group">
         <button class="btn btn-primary" type="submit" name="btn" value="inserir">
-        <span class="glyphicon glyphicon-ok"></span>Inserir</button>
+        <span class="glyphicon glyphicon-ok"></span>Reservar</button>
 
-      </div>
-      <div class="btn-group">
-        <button class="btn btn-success" type="submit" name="btn" value="atualizar"><span class="glyphicon glyphicon-refresh"></span>Atualizar</button>
-      </div>
-      <div class="btn-group">
-        <button class="btn btn-danger" type="submit" name="btn" value="deletar"><span class="glyphicon glyphicon-remove"></span>Deletar</button>
       </div>
       </div>
       </div>

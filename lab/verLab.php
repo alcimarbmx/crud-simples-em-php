@@ -1,16 +1,16 @@
-<?php include('conexao.php');
+<?php 
+include 'conexao.php';
 
-  if(!empty($_REQUEST)){
-    $busca = $_REQUEST['buscar'];
-    $query = "SELECT * FROM lab WHERE nome LIKE '%$busca%' or codigo LIKE '%$busca%'";
-  }else{
-    $query = "SELECT * FROM lab";
-  }
+$query = "";
+if(!empty($_REQUEST)){
+	$nomeLab = $_REQUEST['nome'];
+	$codLab =  $_REQUEST['codigo'];
+	
+}else{
+	$nomeLab = "";
+	$codLab = "";
+}
 
-
-  
-$res = mysqli_query($conn, $query);
-$rows = mysqli_num_rows($res);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -22,17 +22,14 @@ $rows = mysqli_num_rows($res);
     <meta name="author" content="">
     <link rel="icon" href="../favicon.ico">
 
-    <title>Laboratórios</title>
+    <title>Ver informações</title>
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
     
     <link href="carousel.css" rel="stylesheet">
   </head>
-<!-- NAVBAR
-================================================== -->
   <body>
     <div class="navbar-wrapper">
       <div class="container">
-
         <nav class="navbar navbar-inverse navbar-static-top">
           <div class="container">
             <div class="navbar-header">
@@ -50,7 +47,7 @@ $rows = mysqli_num_rows($res);
                 <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="reservarLab.php">Reservar laboratório</a></li>
+                  	<li><a href="reservarLab.php">Reservar laboratório</a></li>
                     <li><a href="listarUser.php">Listar usuários</a></li>
                     <li><a href="inserirUser.php">Inserir  usuário</a></li>
                   </ul>
@@ -69,42 +66,25 @@ $rows = mysqli_num_rows($res);
     </div>
 
 <hr class="featurette-divider">
-<!--Listar laboratorios-->
-      
-       <div class="container">  
-       <form class="form" method="get" action="listarLab.php">
-        <input type="text" name="buscar" id="nome" class="form" autofocus>
-        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span>Procurar</button>
-      </form>     
-        <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Código</th>
-        <th>Laboratorio</th>
-        <th>Visualizar</th>
-        <th>Editar</th>
-        <th>Excluir</th>
-      </tr>
-    </thead>
-    <tbody>
+       <div class="container">       
+    <form class="form">
+        
+        <h2 class="form">Laboratório</h2>
+        <label for="nome" class="only">Nome</label>
+        <input type="text" name="nome" id="nome" class="form-control" <?php echo "value='$nomeLab' readonly";?> autofocus>
 
-      <?php             
+        <label for="codigo" class="only">Código</label>
+        <input type="number" name="codigo" id="codigo" class="form-control" <?php echo "value='$codLab' readonly"; ?> autofocus>
 
-while($linha = mysqli_fetch_array($res)){
-  
-    
-        echo "<tr><td>".$linha['codigo']."</td>";
-        echo "<td>".$linha['nome']."</td>";
-        echo "<td><a href=\"verLab.php?codigo=$linha[codigo]&nome=$linha[nome]\"<span class='glyphicon glyphicon-eye-open'></span></a></td>";
-        echo "<td><a href=\"editLab.php?codigo=$linha[codigo]&nome=$linha[nome]\"><span class='glyphicon glyphicon-edit'></span></a></td>";
-        echo "<td><a href=\"controllerLab.php?btn=deletar&codigo=$linha[codigo]&nome=$linha[nome]\"onClick=\"return confirm('Tem certeza que deseja excluir?')\"><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
-      }
-    ?>
-    </tbody>
-  </table>
-</div>
-  </div>
-    </div> <!-- /container -->
+        <br>
+        <div class="btn-group">
+        <a href="listarLab.php" class="btn btn-primary" name="btn"><span class="glyphicon glyphicon-arrow-left"></span>Voltar</a>
+      </div>
+      </div>
+    </form>
+	  </div>
+      </div>
+
 
     
 <hr class="featurette-divider">
@@ -114,15 +94,8 @@ while($linha = mysqli_fetch_array($res)){
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
-
-    </div><!-- /.container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../dist/js/bootstrap.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>  
   </body>
 </html>

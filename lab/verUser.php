@@ -1,11 +1,15 @@
 <?php 
 include 'conexao.php';
 
-$nome = $_REQUEST['nome'];
-
 $query = "";
-if(!empty($nome)){
-
+if(!empty($_REQUEST)){
+	$nomeUser = $_REQUEST['nome'];
+	$codUser =  $_REQUEST['matricula'];
+	$funUser =  $_REQUEST['funcao'];
+}else{
+	$nomeUser = "";
+	$codUser = "";
+	$funUser = "";
 
 }
 
@@ -65,35 +69,25 @@ if(!empty($nome)){
 
 <hr class="featurette-divider">
        <div class="container">       
-    <form class="form" method="post" action="controllerUser.php">
+    <form class="form" method="post" action="#">
         
         <h2 class="form">Usuário</h2>
         <label for="nome" class="only">Nome</label>
-        <input type="text" name="nome" id="nome" class="form-control" value="<?php print $nome; ?>" required autofocus>
+        <input type="text" name="nome" id="nome" class="form-control" <?php echo "value='$nomeUser' readonly";?> autofocus>
 
         <label for="matricula" class="only">Matrícula</label>
-        <input type="number" name="matricula" id="matricula" class="form-control" <?php print "value='$codUser' readonly"; ?> required autofocus>
+        <input type="number" name="matricula" id="matricula" class="form-control" <?php echo "value='$codUser' readonly"; ?> autofocus>
 
         <label for="funcao" class="only">Ocupação</label>
-        <input type="text" name="funcao" id="funcao" class="form-control" value="<?php print $funUser; ?>"  required><br>
-
-        <div class="btn-group btn-group-justified">
-      <!--<div class="btn-group">
-        <button class="btn btn-primary" type="submit" name="btn" value="inserir">
-        <span class="glyphicon glyphicon-ok"></span>Inserir</button>
-
-      </div>-->
-      <div class="btn-group">
-        <button class="btn btn-success" type="submit" name="btn" value="atualizar"><span class="glyphicon glyphicon-refresh"></span>Atualizar</button>
-      </div>
-      <!--<div class="btn-group">
-        <button class="btn btn-danger" type="submit" name="btn" value="deletar"><span class="glyphicon glyphicon-remove"></span>Deletar</button>
-      </div>-->
+        <input type="text" name="funcao" id="funcao" class="form-control" <?php echo "value='$funUser' readonly";?>  autofocus><br>
+        <div class="btn-group">
+        <a href="listarUser.php" class="btn btn-primary" name="btn"><span class="glyphicon glyphicon-arrow-left"></span>Voltar</a>
       </div>
       </div>
     </form>
 	  </div>
       </div>
+
 
     
 <hr class="featurette-divider">

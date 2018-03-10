@@ -1,4 +1,16 @@
-<?php include('conexao.php');?>
+<?php include('conexao.php');
+
+  if(!empty($_REQUEST)){
+    $busca = $_REQUEST['buscar'];
+    $query = "SELECT * FROM usuario WHERE nome LIKE '%$busca%' or matricula LIKE '%$busca%'";
+  }else{
+    $query = "SELECT * FROM usuario";
+  }
+
+$res = mysqli_query($conn, $query);
+$rows = mysqli_num_rows($res);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -9,7 +21,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../favicon.ico">
 
-    <title>Inserir usuário</title>
+    <title>Usuários</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -57,25 +69,30 @@
     </div>
 
 <hr class="featurette-divider">
-       <div class="container">       
-        <table class="table table-hover">
+       <div class="container"> 
+       <form class="form" method="get" action="listarUser.php">
+        <input type="text" name="buscar" id="nome" class="form" autofocus>
+        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span>Procurar</button>
+        </form>      
+    <table class="table table-hover">
     <thead>
       <tr>
         <th>Usuário</th>
         <th>Matrícula</th>
         <th>Função</th>
+        <th>Ver</th>
         <th>Editar</th>
         <th>Excluir</th>
       </tr>
     </thead>
     <tbody>
-      <?php  $query = "SELECT * FROM usuario";
-             $res = mysqli_query($conn, $query);
+      <?php  
 
 while($linha = mysqli_fetch_array($res)){
         echo "<tr><td>".$linha['nome']."</td>";
         echo "<td>".$linha['matricula']."</td>";
         echo "<td>".$linha['funcao']."</td>";
+        echo "<td><a href=\"verUser.php?btn=atualizar&nome=$linha[nome]&matricula=$linha[matricula]&funcao=$linha[funcao]\"><span class='glyphicon glyphicon-eye-open'></span></a></td>";
         echo "<td><a href=\"editUser.php?btn=atualizar&nome=$linha[nome]&matricula=$linha[matricula]&funcao=$linha[funcao]\"><span class='glyphicon glyphicon-edit'></span></a></td>";
         echo "<td><a href=\"controllerUser.php?btn=deletar&nome=$linha[nome]&matricula=$linha[matricula]&funcao=$linha[funcao]\"onClick=\"return confirm('Tem certeza que deseja excluir?')\"><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
         

@@ -21,7 +21,7 @@ if(! empty($_REQUEST)){
     <meta name="author" content="">
     <link rel="icon" href="../favicon.ico">
 
-    <title>Inserir usuário</title>
+    <title>Editar usuário</title>
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
     
     <link href="carousel.css" rel="stylesheet">
