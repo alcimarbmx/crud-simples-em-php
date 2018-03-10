@@ -70,8 +70,8 @@ $rows = mysqli_num_rows($res);
 
 <hr class="featurette-divider">
        <div class="container"> 
-       <form class="form" method="get" action="listarUser.php">
-        <input type="text" name="buscar" id="nome" class="form" autofocus>
+       <form class="form-inline" method="get" action="listarUser.php">
+        <input type="text" name="buscar" id="nome" class="form-control" autofocus>
         <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span>Procurar</button>
         </form>      
     <table class="table table-hover">

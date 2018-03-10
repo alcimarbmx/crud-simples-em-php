@@ -72,8 +72,8 @@ $rows = mysqli_num_rows($res);
 <!--Listar laboratorios-->
       
        <div class="container">  
-       <form class="form" method="get" action="listarLab.php">
-        <input type="text" name="buscar" id="nome" class="form" autofocus>
+       <form class="form-inline" method="get" action="listarLab.php">
+        <input type="text" name="buscar" id="nome" class="form-control" autofocus>
         <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span>Procurar</button>
       </form>     
         <table class="table table-hover">
