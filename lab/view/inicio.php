@@ -1,17 +1,4 @@
-<?php 
-include 'conexao.php';
-
-$query = "";
-if(!empty($_REQUEST)){
-	$nomeLab = $_REQUEST['nome'];
-	$codLab =  $_REQUEST['codigo'];
-	
-}else{
-	$nomeLab = "";
-	$codLab = "";
-}
-
-?>
+<?php include '../controller/conexao.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -22,10 +9,12 @@ if(!empty($_REQUEST)){
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Ver informações</title>
-    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link href="carousel.css" rel="stylesheet">
+    <title>Início</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <script src="../assets/js/ie-emulation-modes-warning.js"></script>-->
+    <link href="../css/carousel.css" rel="stylesheet">
   </head>
   <body>
     <div class="navbar-wrapper">
@@ -47,9 +36,10 @@ if(!empty($_REQUEST)){
                 <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                  	<li><a href="reservarLab.php">Reservar laboratório</a></li>
+                    <li><a href="reservarLab.php">Reservar laboratório</a></li>
                     <li><a href="listarUser.php">Listar usuários</a></li>
                     <li><a href="inserirUser.php">Inserir  usuário</a></li>
+
                   </ul>
                   <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Laboratório<span class="caret"></span></a>
@@ -66,25 +56,29 @@ if(!empty($_REQUEST)){
     </div>
 
 <hr class="featurette-divider">
-       <div class="container">       
-    <form class="form">
-        
-        <h2 class="form">Laboratório</h2>
-        <label for="nome" class="only">Nome</label>
-        <input type="text" name="nome" id="nome" class="form-control" <?php echo "value='$nomeLab' readonly";?> autofocus>
+       <div class="container"> 
 
-        <label for="codigo" class="only">Código</label>
-        <input type="number" name="codigo" id="codigo" class="form-control" <?php echo "value='$codLab' readonly"; ?> autofocus>
+       <h2>Agendados (em construção)</h2>      
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Laboratorio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php  $query = "SELECT * FROM lab";
+             $res = mysqli_query($conn, $query);
 
-        <br>
-        <div class="btn-group">
-        <a href="listarLab.php" class="btn btn-primary" name="btn"><span class="glyphicon glyphicon-arrow-left"></span>Voltar</a>
-      </div>
-      </div>
-    </form>
+while($linha = mysqli_fetch_array($res)){
+  
+        echo "<tr><td>".$linha['codigo']."</td>";
+        echo "<td>".$linha['nome']."</td></tr>";
+    }
+    ?>
+    </tbody>
+  </table>
 	  </div>
-      </div>
-
 
     
 <hr class="featurette-divider">
@@ -96,6 +90,7 @@ if(!empty($_REQUEST)){
       </footer>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../dist/js/bootstrap.min.js"></script>  
+    <script>window.jQuery || document.write('<script src="../js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../js/bootstrap.min.js"></script>
   </body>
 </html>

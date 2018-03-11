@@ -1,3 +1,16 @@
+<?php include '../controller/conexao.php';
+
+  if(!empty($_REQUEST)){
+    $busca = $_REQUEST['buscar'];
+    $query = "SELECT * FROM usuario WHERE nome LIKE '%$busca%' or matricula LIKE '%$busca%'";
+  }else{
+    $query = "SELECT * FROM usuario";
+  }
+
+$res = mysqli_query($conn, $query);
+$rows = mysqli_num_rows($res);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -8,9 +21,11 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Inserir laboratório</title>
-    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="carousel.css" rel="stylesheet">
+    <title>Usuários</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
   </head>
 <!-- NAVBAR
 ================================================== -->
@@ -19,7 +34,7 @@
       <div class="container">
 
         <nav class="navbar navbar-inverse navbar-static-top">
-<div class="container">
+          <div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -54,24 +69,37 @@
     </div>
 
 <hr class="featurette-divider">
-       <div class="container">       
-      <form class="form" method="get" action="controllerLab.php">
-        <h2 class="form">Laboratório</h2>
-		
-        <label for="nome" class="only">Nome</label>
-        <input type="text" name="nome" id="nome" class="form-control" required autofocus>
+       <div class="container"> 
+       <form class="form-inline" method="get" action="listarUser.php">
+        <input type="text" name="buscar" id="nome" class="form-control" autofocus>
+        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span>Procurar</button>
+        </form>      
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Usuário</th>
+        <th>Matrícula</th>
+        <th>Função</th>
+        <th>Ver</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php  
 
-        <label for="codigo" class="only">Código</label>
-        <input type="number" name="codigo" id="codigo" class="form-control" required autofocus><br>
-
-        <div class="btn-group btn-group-justified">
-      
-      <div class="btn-group">
-        <button class="btn btn-primary" type="submit" name="btn" value="inserir"><span class="glyphicon glyphicon-ok"></span>Inserir</button>
-      </div>
-      </div>
-      </div>
-      </form>
+while($linha = mysqli_fetch_array($res)){
+        echo "<tr><td>".$linha['nome']."</td>";
+        echo "<td>".$linha['matricula']."</td>";
+        echo "<td>".$linha['funcao']."</td>";
+        echo "<td><a href=\"verUser.php?btn=atualizar&nome=$linha[nome]&matricula=$linha[matricula]&funcao=$linha[funcao]\"><span class='glyphicon glyphicon-eye-open'></span></a></td>";
+        echo "<td><a href=\"editUser.php?btn=atualizar&nome=$linha[nome]&matricula=$linha[matricula]&funcao=$linha[funcao]\"><span class='glyphicon glyphicon-edit'></span></a></td>";
+        echo "<td><a href=\"../controller/controllerUser.php?btn=deletar&nome=$linha[nome]&matricula=$linha[matricula]&funcao=$linha[funcao]\"onClick=\"return confirm('Tem certeza que deseja excluir?')\"><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
+        
+ } ?>
+    </tbody>
+  </table>
+</div>
   </div>
     </div> <!-- /container -->
 
@@ -91,9 +119,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script>window.jQuery || document.write('<script src="../js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../js/bootstrap.min.js"></script>
     
   </body>
 </html>

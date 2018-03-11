@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 07-Mar-2018 às 10:37
+-- Generation Time: 11-Mar-2018 às 23:53
 -- Versão do servidor: 10.1.10-MariaDB
 -- PHP Version: 7.0.2
 
@@ -36,7 +36,12 @@ CREATE TABLE `lab` (
 --
 
 INSERT INTO `lab` (`codigo`, `nome`) VALUES
-(56, 'sgsdgfgbgggggggggggggggg');
+(336, 'laboratÃ³rio de informatica 33'),
+(485, 'biologia'),
+(655, 'Laboratorio de fisica 2'),
+(908, 'atelie'),
+(112343, 'laboratÃ³rio de quÃ­mica 1'),
+(891412, 'laboratÃ³rio de fÃ­sica ');
 
 -- --------------------------------------------------------
 
@@ -55,16 +60,10 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`matricula`, `nome`, `funcao`) VALUES
-(55, 'ewresfsef', 're'),
-(111, 'teste controller 2', 'nada'),
-(123, 'Alcimar Francelino de Medeiros', 'programador'),
-(222, 'teste controller', 'teste'),
-(321, 'maria', 'servidora'),
-(343, 'adm', 'gffgfg'),
-(3434, '1234234', '345345'),
-(453232, 'ensol livre', 'evento'),
-(456456, 'qwqweqeqwe', 'ryr'),
-(546522, 'Alcimar Francelino de Medeiros', '111');
+(428, 'adriane', 'estudante'),
+(7878, 'ensol livre', 'evento de software livre'),
+(25431, 'maria isa', 'estudante'),
+(453232, 'ensol', 'linux sistema operativo');
 
 --
 -- Indexes for dumped tables

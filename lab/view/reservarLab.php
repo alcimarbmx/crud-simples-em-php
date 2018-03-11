@@ -12,10 +12,10 @@
     <title>Reservar laboratório</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
   </head>
 <!-- NAVBAR
 ================================================== -->
@@ -139,8 +139,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../dist/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     
   </body>

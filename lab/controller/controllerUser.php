@@ -1,17 +1,11 @@
 <?php
 include ('conexao.php');
-	//$conn = mysqli_connect("localhost", "root", "", "laboratorio") or die("Erro: ".mysqli_connect_error());
-	
+
 	//recebe valores do usuario
 	$nomeUser = $_REQUEST['nome'];
 	$codUser = $_REQUEST['matricula'];
 	$funUser = $_REQUEST['funcao'];
 
-	//recebe valores do laboratorio
-	/*
-	$nomeLab = $_POST['nome'];
-	$codLab = $_POST['codigo'];
-	*/
 	$btn = $_REQUEST['btn'];
 
 	$query = "";
@@ -31,7 +25,7 @@ include ('conexao.php');
 			break;
 		case "cancelar":
 			$pag = "listarUser";
-			header("refresh: 0; url=$pag.php");
+			header("refresh: 0; url=../view/$pag.php");
 			break;
 	}
 	if(!empty($query)){
@@ -41,11 +35,11 @@ include ('conexao.php');
 		?>
 		<script>alert("Operação bem sucedida!")</script>
 		<?php 
-		header("refresh: 0; url=$pag.php");
+		header("refresh: 0; url=../view/$pag.php");
 	}else{ ?>
 		<script>alert("Operação mal sucedida! Tente novamente.")</script>
 	<?php 
-		header("refresh: 0; url=$pag.php");
+		header("refresh: 0; url=../view/$pag.php");
 	}
 }
 	mysqli_close($conn);

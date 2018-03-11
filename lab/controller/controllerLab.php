@@ -22,7 +22,7 @@
 			$pag = "listarLab";
 			break;
 		case "cancelar":
-			header("refresh: 0; url=listarLab.php");
+			header("refresh: 0; url=../view/listarLab.php");
 			break;
 			}
 if(!empty($query)){
@@ -31,11 +31,11 @@ if(!empty($query)){
 		?>
 		<script>alert("Operação bem sucedida!")</script>
 		<?php 
-		header("refresh: 0; url=$pag.php");
+		header("refresh: 0; url=../view/$pag.php");
 	}else{ ?>
 		<script>alert("Operação mal sucedida! Tente novamente.")</script>
 	<?php 
-		header("refresh: 0; url=$pag.php");
+		header("refresh: 0; url=../view/$pag.php");
 	}
 }
 	mysqli_close($conn);

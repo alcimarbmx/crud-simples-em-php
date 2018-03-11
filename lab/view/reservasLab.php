@@ -1,34 +1,27 @@
-<?php 
-if(! empty($_REQUEST)){
-  $nomeUser = $_REQUEST['nome'];
-  $codUser = $_REQUEST['matricula'];
-  $funUser = $_REQUEST['funcao'];
-}else{
-  $nomeUser = "";
-  $codUser = "";
-  $funUser = "";
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Editar usuário</title>
-    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link href="carousel.css" rel="stylesheet">
-  </head>
+    <title>Laboratórios reservados</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+      </head>
+<!-- NAVBAR
+================================================== -->
   <body>
     <div class="navbar-wrapper">
       <div class="container">
+
         <nav class="navbar navbar-inverse navbar-static-top">
           <div class="container">
             <div class="navbar-header">
@@ -66,38 +59,39 @@ if(! empty($_REQUEST)){
 
 <hr class="featurette-divider">
        <div class="container">       
-    <form class="form" method="post" action="controllerUser.php">
-        
-        <h2 class="form">Usuário</h2>
-        <label for="nome" class="only">Nome</label>
-        <input type="text" name="nome" id="nome" class="form-control" value="<?php print $nomeUser; ?>" required autofocus>
-
-        <label for="matricula" class="only">Matrícula</label>
-        <input type="number" name="matricula" id="matricula" class="form-control" <?php print "value='$codUser' readonly"; ?> required autofocus>
-
-        <label for="funcao" class="only">Ocupação</label>
-        <input type="text" name="funcao" id="funcao" class="form-control" value="<?php print $funUser; ?>"  required><br>
-
-        <div class="btn-group btn-group-justified">
-      <!--<div class="btn-group">
-        <button class="btn btn-primary" type="submit" name="btn" value="inserir">
-        <span class="glyphicon glyphicon-ok"></span>Inserir</button>
-
-      </div>-->
-      <div class="btn-group">
-        <button class="btn btn-success" type="submit" name="btn" value="atualizar"><span class="glyphicon glyphicon-refresh"></span>Salvar</button>
-      </div>
-      <div class="btn-group">
-        <button class="btn btn-danger" type="submit" name="btn" value="cancelar"><span class="glyphicon glyphicon-ban-circle"></span>Cancelar</button>
-      </div>
-      <!--<div class="btn-group">
-        <button class="btn btn-danger" type="submit" name="btn" value="deletar"><span class="glyphicon glyphicon-remove"></span>Deletar</button>
-      </div>-->
-      </div>
-      </div>
-    </form>
-	  </div>
-      </div>
+        <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Usuário</th>
+        <th>Laboratório</th>
+        <th>Data</th>
+        <th>Horários</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Usuário</td>
+        <td>Laboratório</td>
+        <td>Data</td>
+        <td>Horários</td>
+      </tr>
+      <tr>
+        <td>Usuário</td>
+        <td>Laboratório</td>
+        <td>Data</td>
+        <td>Horários</td>
+      </tr>
+      <tr>
+        <td>Usuário</td>
+        <td>Laboratório</td>
+        <td>Data</td>
+        <td>Horários</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+    </div> <!-- /container -->
 
     
 <hr class="featurette-divider">
@@ -107,10 +101,16 @@ if(! empty($_REQUEST)){
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
-    </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../dist/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../js/bootstrap.min.js"></script>
     
   </body>
 </html>

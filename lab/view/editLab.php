@@ -1,19 +1,13 @@
-<?php 
-include 'conexao.php';
-
-$query = "";
+<?php
 if(!empty($_REQUEST)){
-	$nomeUser = $_REQUEST['nome'];
-	$codUser =  $_REQUEST['matricula'];
-	$funUser =  $_REQUEST['funcao'];
+  $nomeLab = $_REQUEST['nome'];
+  $codLab = $_REQUEST['codigo'];
 }else{
-	$nomeUser = "";
-	$codUser = "";
-	$funUser = "";
-
+  $nomeLab = "";
+  $codLab = "";
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -24,16 +18,19 @@ if(!empty($_REQUEST)){
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Ver informações</title>
-    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Editar laboratório</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     
-    <link href="carousel.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
   </head>
+<!-- NAVBAR
+================================================== -->
   <body>
     <div class="navbar-wrapper">
       <div class="container">
+
         <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
+<div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -49,7 +46,7 @@ if(!empty($_REQUEST)){
                 <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                  	<li><a href="reservarLab.php">Reservar laboratório</a></li>
+                    <li><a href="reservarLab.php">Reservar laboratório</a></li>
                     <li><a href="listarUser.php">Listar usuários</a></li>
                     <li><a href="inserirUser.php">Inserir  usuário</a></li>
                   </ul>
@@ -68,26 +65,37 @@ if(!empty($_REQUEST)){
     </div>
 
 <hr class="featurette-divider">
-       <div class="container">       
-    <form class="form" method="post" action="#">
-        
-        <h2 class="form">Usuário</h2>
+       <div class="container"> 
+       <!--Formulario para editar os atributos do laboratorio -->      
+      <form class="form" method="get" action="../controller/controllerLab.php">
+        <h2 class="form">Laboratório</h2>
+		
         <label for="nome" class="only">Nome</label>
-        <input type="text" name="nome" id="nome" class="form-control" <?php echo "value='$nomeUser' readonly";?> autofocus>
+        <input type="text" name="nome" id="nome" class="form-control" <?php echo "value='$nomeLab'"; ?> required autofocus>
 
-        <label for="matricula" class="only">Matrícula</label>
-        <input type="number" name="matricula" id="matricula" class="form-control" <?php echo "value='$codUser' readonly"; ?> autofocus>
+        <label for="codigo" class="only">Código</label>
+        <input type="number" name="codigo" id="codigo" class="form-control" <?php echo "value='$codLab' readonly"; ?> required autofocus><br>
 
-        <label for="funcao" class="only">Ocupação</label>
-        <input type="text" name="funcao" id="funcao" class="form-control" <?php echo "value='$funUser' readonly";?>  autofocus><br>
-        <div class="btn-group">
-        <a href="listarUser.php" class="btn btn-primary" name="btn"><span class="glyphicon glyphicon-arrow-left"></span>Voltar</a>
+        <div class="btn-group btn-group-justified">
+      <!--
+      <div class="btn-group">
+        <button class="btn btn-primary" type="submit" name="btn" value="inserir">
+        <span class="glyphicon glyphicon-ok"></span>Inserir</button>
+      </div>
+      -->
+      <div class="btn-group">
+        <button class="btn btn-success" type="submit" name="btn" value="atualizar"><span class="glyphicon glyphicon-refresh"></span>Salvar</button>
+      </div>
+      
+      <div class="btn-group">
+        <button class="btn btn-danger" type="submit" name="btn" value="cancelar"><span class="glyphicon glyphicon-ban-circle"></span>Cancelar</button>
+      </div>
+    
       </div>
       </div>
-    </form>
-	  </div>
-      </div>
-
+      </form>
+  </div>
+    </div> <!-- /container -->
 
     
 <hr class="featurette-divider">
@@ -97,8 +105,16 @@ if(!empty($_REQUEST)){
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
-    </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../dist/js/bootstrap.min.js"></script>  
+    <script>window.jQuery || document.write('<script src="../js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../js/bootstrap.min.js"></script>
+    
   </body>
 </html>

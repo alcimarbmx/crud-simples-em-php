@@ -1,4 +1,3 @@
-<?php include('conexao.php'); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -9,18 +8,18 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Início</title>
-    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
-    <!--<link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <script src="../assets/js/ie-emulation-modes-warning.js"></script>-->
-    <link href="carousel.css" rel="stylesheet">
+    <title>Inserir laboratório</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
   </head>
+<!-- NAVBAR
+================================================== -->
   <body>
     <div class="navbar-wrapper">
       <div class="container">
+
         <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
+<div class="container">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -39,7 +38,6 @@
                     <li><a href="reservarLab.php">Reservar laboratório</a></li>
                     <li><a href="listarUser.php">Listar usuários</a></li>
                     <li><a href="inserirUser.php">Inserir  usuário</a></li>
-
                   </ul>
                   <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Laboratório<span class="caret"></span></a>
@@ -56,29 +54,26 @@
     </div>
 
 <hr class="featurette-divider">
-       <div class="container"> 
+       <div class="container">       
+      <form class="form" method="get" action="../controller/controllerLab.php">
+        <h2 class="form">Laboratório</h2>
+		
+        <label for="nome" class="only">Nome</label>
+        <input type="text" name="nome" id="nome" class="form-control" required autofocus>
 
-       <h2>Agendados (em construção)</h2>      
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Código</th>
-        <th>Laboratorio</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php  $query = "SELECT * FROM lab";
-             $res = mysqli_query($conn, $query);
+        <label for="codigo" class="only">Código</label>
+        <input type="number" name="codigo" id="codigo" class="form-control" required autofocus><br>
 
-while($linha = mysqli_fetch_array($res)){
-  
-        echo "<tr><td>".$linha['codigo']."</td>";
-        echo "<td>".$linha['nome']."</td></tr>";
-    }
-    ?>
-    </tbody>
-  </table>
-	  </div>
+        <div class="btn-group btn-group-justified">
+      
+      <div class="btn-group">
+        <button class="btn btn-primary" type="submit" name="btn" value="inserir"><span class="glyphicon glyphicon-ok"></span>Inserir</button>
+      </div>
+      </div>
+      </div>
+      </form>
+  </div>
+    </div> <!-- /container -->
 
     
 <hr class="featurette-divider">
@@ -88,9 +83,17 @@ while($linha = mysqli_fetch_array($res)){
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
-    </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../dist/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    
   </body>
 </html>

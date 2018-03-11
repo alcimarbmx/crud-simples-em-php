@@ -1,15 +1,15 @@
-<?php include('conexao.php');
-
-  if(!empty($_REQUEST)){
-    $busca = $_REQUEST['buscar'];
-    $query = "SELECT * FROM usuario WHERE nome LIKE '%$busca%' or matricula LIKE '%$busca%'";
-  }else{
-    $query = "SELECT * FROM usuario";
-  }
-
-$res = mysqli_query($conn, $query);
-$rows = mysqli_num_rows($res);
+<?php 
+if(! empty($_REQUEST)){
+  $nomeUser = $_REQUEST['nome'];
+  $codUser = $_REQUEST['matricula'];
+  $funUser = $_REQUEST['funcao'];
+}else{
+  $nomeUser = "";
+  $codUser = "";
+  $funUser = "";
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -21,18 +21,14 @@ $rows = mysqli_num_rows($res);
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Usuários</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="carousel.css" rel="stylesheet">
+    <title>Editar usuário</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="../css/carousel.css" rel="stylesheet">
   </head>
-<!-- NAVBAR
-================================================== -->
   <body>
     <div class="navbar-wrapper">
       <div class="container">
-
         <nav class="navbar navbar-inverse navbar-static-top">
           <div class="container">
             <div class="navbar-header">
@@ -69,39 +65,39 @@ $rows = mysqli_num_rows($res);
     </div>
 
 <hr class="featurette-divider">
-       <div class="container"> 
-       <form class="form-inline" method="get" action="listarUser.php">
-        <input type="text" name="buscar" id="nome" class="form-control" autofocus>
-        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span>Procurar</button>
-        </form>      
-    <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Usuário</th>
-        <th>Matrícula</th>
-        <th>Função</th>
-        <th>Ver</th>
-        <th>Editar</th>
-        <th>Excluir</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php  
-
-while($linha = mysqli_fetch_array($res)){
-        echo "<tr><td>".$linha['nome']."</td>";
-        echo "<td>".$linha['matricula']."</td>";
-        echo "<td>".$linha['funcao']."</td>";
-        echo "<td><a href=\"verUser.php?btn=atualizar&nome=$linha[nome]&matricula=$linha[matricula]&funcao=$linha[funcao]\"><span class='glyphicon glyphicon-eye-open'></span></a></td>";
-        echo "<td><a href=\"editUser.php?btn=atualizar&nome=$linha[nome]&matricula=$linha[matricula]&funcao=$linha[funcao]\"><span class='glyphicon glyphicon-edit'></span></a></td>";
-        echo "<td><a href=\"controllerUser.php?btn=deletar&nome=$linha[nome]&matricula=$linha[matricula]&funcao=$linha[funcao]\"onClick=\"return confirm('Tem certeza que deseja excluir?')\"><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
+       <div class="container">       
+    <form class="form" method="post" action="../controller/controllerUser.php">
         
- } ?>
-    </tbody>
-  </table>
-</div>
-  </div>
-    </div> <!-- /container -->
+        <h2 class="form">Usuário</h2>
+        <label for="nome" class="only">Nome</label>
+        <input type="text" name="nome" id="nome" class="form-control" value="<?php print $nomeUser; ?>" required autofocus>
+
+        <label for="matricula" class="only">Matrícula</label>
+        <input type="number" name="matricula" id="matricula" class="form-control" <?php print "value='$codUser' readonly"; ?> required autofocus>
+
+        <label for="funcao" class="only">Ocupação</label>
+        <input type="text" name="funcao" id="funcao" class="form-control" value="<?php print $funUser; ?>"  required><br>
+
+        <div class="btn-group btn-group-justified">
+      <!--<div class="btn-group">
+        <button class="btn btn-primary" type="submit" name="btn" value="inserir">
+        <span class="glyphicon glyphicon-ok"></span>Inserir</button>
+
+      </div>-->
+      <div class="btn-group">
+        <button class="btn btn-success" type="submit" name="btn" value="atualizar"><span class="glyphicon glyphicon-refresh"></span>Salvar</button>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-danger" type="submit" name="btn" value="cancelar"><span class="glyphicon glyphicon-ban-circle"></span>Cancelar</button>
+      </div>
+      <!--<div class="btn-group">
+        <button class="btn btn-danger" type="submit" name="btn" value="deletar"><span class="glyphicon glyphicon-remove"></span>Deletar</button>
+      </div>-->
+      </div>
+      </div>
+    </form>
+	  </div>
+      </div>
 
     
 <hr class="featurette-divider">
@@ -111,16 +107,10 @@ while($linha = mysqli_fetch_array($res)){
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
-
-    </div><!-- /.container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../dist/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../js/bootstrap.min.js"></script>
     
   </body>
 </html>

@@ -9,8 +9,8 @@
     <link rel="icon" href="favicon.ico">
 
     <title>Inserir usuário</title>
-    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="carousel.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
   </head>
   <body>
     <div class="navbar-wrapper">
@@ -53,7 +53,7 @@
 
 <hr class="featurette-divider">
        <div class="container">       
-    <form class="form" method="post" action="controllerUser.php">
+    <form class="form" method="post" action="../controller/controllerUser.php">
         
         <h2 class="form">Usuário</h2>
         <label for="nome" class="only">Nome</label>
@@ -86,7 +86,7 @@
       </footer>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../dist/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../js/bootstrap.min.js"></script>
     </body>
 </html>
