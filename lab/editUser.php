@@ -19,7 +19,7 @@ if(! empty($_REQUEST)){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../favicon.ico">
+    <link rel="icon" href="favicon.ico">
 
     <title>Editar usuário</title>
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -85,7 +85,10 @@ if(! empty($_REQUEST)){
 
       </div>-->
       <div class="btn-group">
-        <button class="btn btn-success" type="submit" name="btn" value="atualizar"><span class="glyphicon glyphicon-refresh"></span>Atualizar</button>
+        <button class="btn btn-success" type="submit" name="btn" value="atualizar"><span class="glyphicon glyphicon-refresh"></span>Salvar</button>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-danger" type="submit" name="btn" value="cancelar"><span class="glyphicon glyphicon-ban-circle"></span>Cancelar</button>
       </div>
       <!--<div class="btn-group">
         <button class="btn btn-danger" type="submit" name="btn" value="deletar"><span class="glyphicon glyphicon-remove"></span>Deletar</button>

@@ -7,16 +7,19 @@
 	$btn = $_REQUEST['btn'];
 
 	$query = "";
-
+	$pag = "";
 	switch ($btn) {
 		case "inserir":
 			$query = "INSERT INTO lab (codigo, nome) VALUES ('$codLab', '$nomeLab')";
+			$pag = "inserirLab";
 			break;
 		case "deletar":
 			$query = "DELETE FROM lab WHERE codigo='$codLab'";
+			$pag = "listarLab";
 			break;
 		case "atualizar":
 			$query = "UPDATE lab SET nome='$nomeLab' WHERE codigo ='$codLab'";
+			$pag = "listarLab";
 			break;
 		case "cancelar":
 			header("refresh: 0; url=listarLab.php");
@@ -28,10 +31,12 @@ if(!empty($query)){
 		?>
 		<script>alert("Operação bem sucedida!")</script>
 		<?php 
-header("refresh: 0; url=inicio.php");
+		header("refresh: 0; url=$pag.php");
 	}else{ ?>
 		<script>alert("Operação mal sucedida! Tente novamente.")</script>
-	<?php }
+	<?php 
+		header("refresh: 0; url=$pag.php");
+	}
 }
 	mysqli_close($conn);
 	//header("refresh: 0; url=inicio.php");

@@ -20,7 +20,7 @@ $rows = mysqli_num_rows($res);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../favicon.ico">
+    <link rel="icon" href="favicon.ico">
 
     <title>Laboratórios</title>
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -97,7 +97,7 @@ while($linha = mysqli_fetch_array($res)){
         echo "<td>".$linha['nome']."</td>";
         echo "<td><a href=\"verLab.php?codigo=$linha[codigo]&nome=$linha[nome]\"<span class='glyphicon glyphicon-eye-open'></span></a></td>";
         echo "<td><a href=\"editLab.php?codigo=$linha[codigo]&nome=$linha[nome]\"><span class='glyphicon glyphicon-edit'></span></a></td>";
-        echo "<td><a href=\"controllerLab.php?btn=deletar&codigo=$linha[codigo]&nome=$linha[nome]\"onClick=\"return confirm('Tem certeza que deseja excluir?')\"><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
+        echo "<td><a href=\"../controllerLab/controllerLab.php?btn=deletar&codigo=$linha[codigo]&nome=$linha[nome]\"onClick=\"return confirm('Tem certeza que deseja excluir?')\"><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
       }
     ?>
     </tbody>

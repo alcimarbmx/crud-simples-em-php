@@ -29,17 +29,26 @@ include ('conexao.php');
 			$query = "UPDATE  usuario SET nome = '$nomeUser', funcao = '$funUser' WHERE matricula = '$codUser'";
 			$pag = "listarUser";
 			break;
+		case "cancelar":
+			$pag = "listarUser";
+			header("refresh: 0; url=$pag.php");
+			break;
 	}
+	if(!empty($query)){
 	$operacao = mysqli_query($conn, $query);
 
 	if($operacao){ 
 		?>
 		<script>alert("Operação bem sucedida!")</script>
-		<?php }else{ ?>
-		
+		<?php 
+		header("refresh: 0; url=$pag.php");
+	}else{ ?>
 		<script>alert("Operação mal sucedida! Tente novamente.")</script>
-	<?php }
+	<?php 
+		header("refresh: 0; url=$pag.php");
+	}
+}
 	mysqli_close($conn);
-	header("refresh: 0; url=$pag.php");
+	
 	?>
 	
