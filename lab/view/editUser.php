@@ -46,7 +46,7 @@ if(! empty($_REQUEST)){
                 <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="reservarLab.php">Reservar laboratório</a></li>
+                    
                     <li><a href="listarUser.php">Listar usuários</a></li>
                     <li><a href="inserirUser.php">Inserir  usuário</a></li>
                   </ul>
@@ -55,6 +55,8 @@ if(! empty($_REQUEST)){
                   <ul class="dropdown-menu">
                     <li><a href="listarLab.php">Listar laboratórios</a></li>
                     <li><a href="inserirLab.php">Inserir</a></li>
+                    <li><a href="reservarLab.php">Reservar laboratório</a></li>
+                    <li><a href="listarRes.php">Laboratórios reservados</a></li>
                   </ul>
                 </li>
               </ul>

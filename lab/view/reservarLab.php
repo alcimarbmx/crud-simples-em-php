@@ -1,3 +1,13 @@
+<?php include '../controller/conexao.php';
+
+    $queryLab = "SELECT * FROM lab";
+    $queryUser = "SELECT * FROM usuario";
+
+$resLab = mysqli_query($conn, $queryLab);
+$resUser = mysqli_query($conn, $queryUser);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -40,7 +50,7 @@
                 <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="reservarLab.php">Reservar laboratório</a></li>
+                    
                     <li><a href="listarUser.php">Listar usuários</a></li>
                     <li><a href="inserirUser.php">Inserir  usuário</a></li>
                   </ul>
@@ -49,6 +59,8 @@
                   <ul class="dropdown-menu">
                     <li><a href="listarLab.php">Listar laboratórios</a></li>
                     <li><a href="inserirLab.php">Inserir</a></li>
+                    <li><a href="reservarLab.php">Reservar laboratório</a></li>
+                    <li><a href="listarRes.php">Laboratórios reservados</a></li>
                   </ul>
                 </li>
               </ul>
@@ -60,22 +72,61 @@
 
 <hr class="featurette-divider">
        <div class="container">       
-      <form class="form" method="post" action="#">
+      <form class="form" method="post" action="../controller/controllerRes.php">
         
         <h2 class="form">Reservar laboratório</h2>
         <div class="container">
-        <label for="nome" class="only">Nome do usuário</label>
-        <input type="text" name="nome" id="nome" class="form-control" required autofocus>
 
+          <!--campo de nome de usuario-->
+        <label for="nomeUser" class="only">Nome do usuário</label>
+        <select name="nomeUser" id="nome" class="form-control">
+          <option value=""></option>
+<?php 
+  $varUser = array(0);
+  $u = 0;
+  while($user = mysqli_fetch_array($resUser)){
+      echo "<option value='$user[nome]'>$user[nome]</option>";
+      $varUser[$u] = $user[matricula];
+      $u++;
+    }
+?>
+        </select>
+        <!--campo de matricula de usuario-->
         <label for="matricula" class="only">Matrícula</label>
-        <input type="number" name="matricula" id="matricula" class="form-control" required autofocus>
-
-        <label for="nome" class="only">Nome do laboratório</label>
-        <input type="text" name="nome" id="nome" class="form-control" required autofocus>
-
+        <select name="matricula" id="matricula" class="form-control">
+          <option value=""></option>
+  <?php 
+  $i = 0;
+  while($i < count($varUser)){
+  echo "<option value='$varUser[$i]'>$varUser[$i]</option>";
+  $i++;
+}
+ ?>
+</select>
+<!--campo de nome de laboratorio-->
+        <label for="nomeLab" class="only">Nome do laboratório</label>
+<select name="nomeLab" id="nomeLab" class="form-control">
+          <option value=""></option>
+<?php 
+  $varLab = array(0);
+  $u = 0;
+  while($lab = mysqli_fetch_array($resLab)){
+  echo "<option value='$lab[nome]'>$lab[nome]</option>";
+  $varLab[$u] = $lab[codigo];
+  $u++;
+  }  
+?>
+</select>
+<!--campo de codigo do laboratorio-->
         <label for="codigo" class="only">Código</label>
-        <input type="number" name="codigo" id="codigo" class="form-control" required autofocus><br>
-
+<select name="codigo" id="codigo" class="form-control">
+          <option value=""></option>
+<?php $i = 0;
+  while($i < count($varLab)){
+  echo "<option value='$varLab[$i]'>$varLab[$i]</option>";
+  $i++;}
+?>
+</select>
         <label for="data" class="only">Data</label>
         <input type="date" name="data" id="data" class="form-control" required autofocus><br>
         
@@ -83,26 +134,26 @@
         <div class="form-control">
         <div class="checkbox-inline">
         <label class="checkbox-inline">
-        <input type="checkbox" name="horario" value="1">1º primeiro</label>
+        <input type="checkbox" name="horario[]" value="1">1º primeiro</label>
         <label class="checkbox-inline">
-        <input type="checkbox" name="horario" value="2">2º segundo
+        <input type="checkbox" name="horario[]" value="2">2º segundo
         </label>
         <label class="checkbox-inline">
-        <input type="checkbox" name="horario" value="3">3º terceiro
+        <input type="checkbox" name="horario[]" value="3">3º terceiro
         </label>
         <label class="checkbox-inline">
-        <input type="checkbox" name="horario" value="4">4º quarto
+        <input type="checkbox" name="horario[]" value="4">4º quarto
         </label>
         <label class="checkbox-inline">
-        <input type="checkbox" name="horario" value="5">5º quinto
+        <input type="checkbox" name="horario[]" value="5">5º quinto
         </label>
         <label class="checkbox-inline">
-        <input type="checkbox" name="horario" value="6">6º sexto</label>
+        <input type="checkbox" name="horario[]" value="6">6º sexto</label>
         </div>
       </div>
 
         <label for="turno" class="only">Turno</label>
-        <select class="form-control" id="turno">
+        <select class="form-control" name="turno" id="turno">
           <option value=""></option>
           <option value="Manhã">Manhã</option>
           <option value="Tarde">Tarde</option>

@@ -1,21 +1,32 @@
+<?php include '../controller/conexao.php';
+
+  if(!empty($_REQUEST)){
+    $busca = $_REQUEST['buscar'];
+    $query = "SELECT * FROM lab WHERE nome LIKE '%$busca%' or codigo LIKE '%$busca%'";
+  }else{
+    $query = "SELECT * FROM agendados";
+  }
+
+
+  
+$res = mysqli_query($conn, $query);
+$rows = mysqli_num_rows($res);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Laboratórios reservados</title>
-
-    <!-- Bootstrap core CSS -->
+    <title>Laboratórios</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
     <link href="../css/carousel.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-      </head>
+  </head>
 <!-- NAVBAR
 ================================================== -->
   <body>
@@ -39,7 +50,7 @@
                 <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="reservarLab.php">Reservar laboratório</a></li>
+                    
                     <li><a href="listarUser.php">Listar usuários</a></li>
                     <li><a href="inserirUser.php">Inserir  usuário</a></li>
                   </ul>
@@ -48,6 +59,8 @@
                   <ul class="dropdown-menu">
                     <li><a href="listarLab.php">Listar laboratórios</a></li>
                     <li><a href="inserirLab.php">Inserir</a></li>
+                    <li><a href="reservarLab.php">Reservar laboratório</a></li>
+                    <li><a href="listarRes.php">Laboratórios reservados</a></li>
                   </ul>
                 </li>
               </ul>
@@ -58,35 +71,47 @@
     </div>
 
 <hr class="featurette-divider">
-       <div class="container">       
-        <table class="table table-hover">
+<!--Listar laboratorios-->
+      
+       <div class="container">    
+      <table class="table table-hover">
     <thead>
       <tr>
-        <th>Usuário</th>
-        <th>Laboratório</th>
-        <th>Data</th>
-        <th>Horários</th>
+        <th>ID</th>
+        <th>nomeUser</th>
+        <th>codUser</th> 
+        <th>nomeLab</th> 
+        <th>codLab</th> 
+        <th>data</th> 
+        <th>horarios</th> 
+        <th>turno</th>
+        <!--
+        <th>Visualizar</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+      -->
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Usuário</td>
-        <td>Laboratório</td>
-        <td>Data</td>
-        <td>Horários</td>
-      </tr>
-      <tr>
-        <td>Usuário</td>
-        <td>Laboratório</td>
-        <td>Data</td>
-        <td>Horários</td>
-      </tr>
-      <tr>
-        <td>Usuário</td>
-        <td>Laboratório</td>
-        <td>Data</td>
-        <td>Horários</td>
-      </tr>
+
+      <?php             
+//nomeUser, codUser, nomeLab, codLab, data, horarios, turno
+while($linha = mysqli_fetch_array($res)){
+echo "<tr><td>".$linha['id']."</td>";
+echo "<td>".$linha['nomeUser']."</td>";
+echo "<td>".$linha['codUser']."</td>";
+echo "<td>".$linha['nomeLab']."</td>";
+echo "<td>".$linha['codLab']."</td>";
+echo "<td>".$linha['data']."</td>";
+echo "<td>".$linha['horarios']."</td>";
+echo "<td>".$linha['turno']."</td>";
+echo "<td><a href=\"../controller/controllerRes.php?btn=deletar&id=$linha[id]\"onClick=\"return confirm('Tem certeza que deseja excluir?')\"><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
+/*
+echo "<td><a href=\"verLab.php?codigo=$linha[codigo]&nome=$linha[nome]\"<span class='glyphicon glyphicon-eye-open'></span></a></td>";
+echo "<td><a href=\"editLab.php?codigo=$linha[codigo]&nome=$linha[nome]\"><span class='glyphicon glyphicon-edit'></span></a></td>";
+echo "<td><a href=\"../controller/controllerLab.php?btn=deletar&codigo=$linha[codigo]&nome=$linha[nome]\"onClick=\"return confirm('Tem certeza que deseja excluir?')\"><span class='glyphicon glyphicon-trash'></span></a></td></tr>";*/
+      }
+    ?>
     </tbody>
   </table>
 </div>
@@ -111,6 +136,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../js/bootstrap.min.js"></script>
-    
   </body>
 </html>

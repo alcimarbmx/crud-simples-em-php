@@ -36,7 +36,7 @@
                 <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="reservarLab.php">Reservar laboratório</a></li>
+                    
                     <li><a href="listarUser.php">Listar usuários</a></li>
                     <li><a href="inserirUser.php">Inserir  usuário</a></li>
 
@@ -46,6 +46,8 @@
                   <ul class="dropdown-menu">
                     <li><a href="listarLab.php">Listar laboratórios</a></li>
                     <li><a href="inserirLab.php">Inserir</a></li>
+                    <li><a href="reservarLab.php">Reservar laboratório</a></li>
+                    <li><a href="listarRes.php">Laboratórios reservados</a></li>
                   </ul>
                 </li>
               </ul>
@@ -62,18 +64,24 @@
 <table class="table table-hover">
     <thead>
       <tr>
-        <th>Código</th>
-        <th>Laboratorio</th>
+        <th>Usuário</th>
+        <th>Laboratório</th>
+        <th>Data</th>
+        <th>Horários</th>
+        <th>Turno</th>
       </tr>
     </thead>
     <tbody>
-      <?php  $query = "SELECT * FROM lab";
+      <?php  $query = "SELECT nomeUser, nomeLab, data, horarios, turno FROM agendados";
              $res = mysqli_query($conn, $query);
 
 while($linha = mysqli_fetch_array($res)){
   
-        echo "<tr><td>".$linha['codigo']."</td>";
-        echo "<td>".$linha['nome']."</td></tr>";
+        echo "<tr><td>".$linha['nomeUser']."</td>";
+        echo "<td>".$linha['nomeLab']."</td>";
+        echo "<td>".$linha['data']."</td>";
+        echo "<td>".$linha['horarios']."</td>";
+        echo "<td>".$linha['turno']."</td></tr>";
     }
     ?>
     </tbody>
