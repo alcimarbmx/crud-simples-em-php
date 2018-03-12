@@ -1,16 +1,16 @@
 <?php include '../controller/conexao.php';
 
-  if(!empty($_REQUEST)){
+  /*(!empty($_REQUEST)){
     $busca = $_REQUEST['buscar'];
     $query = "SELECT * FROM lab WHERE nome LIKE '%$busca%' or codigo LIKE '%$busca%'";
-  }else{
+  }else{*/
     $query = "SELECT * FROM agendados";
-  }
+  //}
 
 
   
 $res = mysqli_query($conn, $query);
-$rows = mysqli_num_rows($res);
+//$rows = mysqli_num_rows($res);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -85,11 +85,7 @@ $rows = mysqli_num_rows($res);
         <th>data</th> 
         <th>horarios</th> 
         <th>turno</th>
-        <!--
-        <th>Visualizar</th>
-        <th>Editar</th>
         <th>Excluir</th>
-      -->
       </tr>
     </thead>
     <tbody>

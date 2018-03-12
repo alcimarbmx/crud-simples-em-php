@@ -79,7 +79,7 @@ $resUser = mysqli_query($conn, $queryUser);
 
           <!--campo de nome de usuario-->
         <label for="nomeUser" class="only">Nome do usuário</label>
-        <select name="nomeUser" id="nome" class="form-control">
+        <select name="nomeUser" id="nome" class="form-control" required>
           <option value=""></option>
 <?php 
   $varUser = array(0);
@@ -93,7 +93,7 @@ $resUser = mysqli_query($conn, $queryUser);
         </select>
         <!--campo de matricula de usuario-->
         <label for="matricula" class="only">Matrícula</label>
-        <select name="matricula" id="matricula" class="form-control">
+        <select name="matricula" id="matricula" class="form-control" required>
           <option value=""></option>
   <?php 
   $i = 0;
@@ -105,7 +105,7 @@ $resUser = mysqli_query($conn, $queryUser);
 </select>
 <!--campo de nome de laboratorio-->
         <label for="nomeLab" class="only">Nome do laboratório</label>
-<select name="nomeLab" id="nomeLab" class="form-control">
+<select name="nomeLab" id="nomeLab" class="form-control" required>
           <option value=""></option>
 <?php 
   $varLab = array(0);
@@ -119,7 +119,7 @@ $resUser = mysqli_query($conn, $queryUser);
 </select>
 <!--campo de codigo do laboratorio-->
         <label for="codigo" class="only">Código</label>
-<select name="codigo" id="codigo" class="form-control">
+<select name="codigo" id="codigo" class="form-control" required>
           <option value=""></option>
 <?php $i = 0;
   while($i < count($varLab)){
@@ -153,7 +153,7 @@ $resUser = mysqli_query($conn, $queryUser);
       </div>
 
         <label for="turno" class="only">Turno</label>
-        <select class="form-control" name="turno" id="turno">
+        <select class="form-control" name="turno" id="turno" required>
           <option value=""></option>
           <option value="Manhã">Manhã</option>
           <option value="Tarde">Tarde</option>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 12-Mar-2018 às 08:12
+-- Generation Time: 12-Mar-2018 às 08:34
 -- Versão do servidor: 10.1.10-MariaDB
 -- PHP Version: 7.0.2
 
@@ -42,7 +42,9 @@ CREATE TABLE `agendados` (
 --
 
 INSERT INTO `agendados` (`id`, `data`, `horarios`, `codUser`, `codLab`, `turno`, `nomeUser`, `nomeLab`) VALUES
-(19, '2018-03-10', '1,2,3,4,5,6,', 7878, 336, 'Tarde', 'ensol livre', 'laboratÃ³rio de informatica 33');
+(19, '2018-03-10', '1,2,3,4,5,6,', 7878, 336, 'Tarde', 'ensol livre', 'laboratÃ³rio de informatica 33'),
+(20, '2018-03-16', '2,', 25431, 336, 'ManhÃ£', 'maria isa', 'laboratÃ³rio de informatica 33'),
+(21, '2018-03-08', '6,', 122, 336, 'ManhÃ£', 'alcimar', 'laboratÃ³rio de informatica 33');
 
 -- --------------------------------------------------------
 
@@ -83,6 +85,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`matricula`, `nome`, `funcao`) VALUES
+(122, 'alcimar', 'estudante'),
 (25431, 'maria isa', 'estudante'),
 (453232, 'ensol', 'linux sistema operativo');
 
@@ -116,7 +119,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `agendados`
 --
 ALTER TABLE `agendados`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
