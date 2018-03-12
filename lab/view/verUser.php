@@ -1,7 +1,7 @@
 <?php 
 include '../controller/conexao.php';
 
-$query = "";
+
 if(!empty($_REQUEST)){
 	$nomeUser = $_REQUEST['nome'];
 	$codUser =  $_REQUEST['matricula'];

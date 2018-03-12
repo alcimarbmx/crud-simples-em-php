@@ -8,7 +8,7 @@
   }
 
 $res = mysqli_query($conn, $query);
-$rows = mysqli_num_rows($res);
+
 ?>
 
 <!DOCTYPE html>

@@ -1,16 +1,7 @@
 <?php include '../controller/conexao.php';
 
-  /*(!empty($_REQUEST)){
-    $busca = $_REQUEST['buscar'];
-    $query = "SELECT * FROM lab WHERE nome LIKE '%$busca%' or codigo LIKE '%$busca%'";
-  }else{*/
-    $query = "SELECT * FROM agendados";
-  //}
-
-
-  
-$res = mysqli_query($conn, $query);
-//$rows = mysqli_num_rows($res);
+    $query = "SELECT * FROM agendados"; 
+  $res = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
