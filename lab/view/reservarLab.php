@@ -1,10 +1,10 @@
 <?php include '../controller/conexao.php';
-
+	$lis = new conecta();
     $queryLab = "SELECT * FROM lab";
     $queryUser = "SELECT * FROM usuario";
 
-$resLab = mysqli_query($conn, $queryLab);
-$resUser = mysqli_query($conn, $queryUser);
+$resLab = $lis->consult($queryLab);
+$resUser = $lis->consult($queryUser);
 
 ?>
 
@@ -128,7 +128,7 @@ $resUser = mysqli_query($conn, $queryUser);
 ?>
 </select>
         <label for="data" class="only">Data</label>
-        <input type="date" name="data" id="data" class="form-control" required autofocus><br>
+        <input type="date" name="data" id="data" class="form-control" required autofocus>
         
         <label for="horario" class="only">Horários</label>
         <div class="form-control">
@@ -151,14 +151,22 @@ $resUser = mysqli_query($conn, $queryUser);
         <input type="checkbox" name="horario[]" value="6">6º sexto</label>
         </div>
       </div>
-
-        <label for="turno" class="only">Turno</label>
-        <select class="form-control" name="turno" id="turno" required>
+	  <label for="turno" class="only">Turno</label>
+	  <div class="form-control">
+        
+		<input type="radio" name="turno" value="Manhã">Manhã
+		<input type="radio" name="turno" value="Tarde">Tarde
+		<input type="radio" name="turno" value="Noite">Noite
+        
+		</div>
+		<!--
+		<select class="form-control" name="turno" id="turno" required>
           <option value=""></option>
           <option value="Manhã">Manhã</option>
           <option value="Tarde">Tarde</option>
           <option value="Noite">Noite</option>
         </select>
+		-->
       <br>
 
        

@@ -6,8 +6,8 @@
   }else{
     $query = "SELECT * FROM usuario";
   }
-
-$res = mysqli_query($conn, $query);
+	$lis = new conecta();
+    $res = $lis->consult($query);
 
 ?>
 

@@ -1,6 +1,6 @@
 <?php
 	include('conexao.php');
-	
+	$lab = new conecta();
 	$nomeLab = $_REQUEST['nome'];
 	$codLab = $_REQUEST['codigo'];
 	
@@ -26,7 +26,7 @@
 			break;
 			}
 if(!empty($query)){
-	$operacao = mysqli_query($conn, $query);
+	$operacao = $lab->consult($query);
 	if($operacao){ 
 		?>
 		<script>alert("Operação bem sucedida!")</script>
@@ -38,6 +38,6 @@ if(!empty($query)){
 		header("refresh: 0; url=../view/$pag.php");
 	}
 }
-	mysqli_close($conn);
+	//mysqli_close($conn);
 	//header("refresh: 0; url=inicio.php");
 	?>

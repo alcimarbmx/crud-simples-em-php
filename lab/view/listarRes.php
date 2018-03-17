@@ -1,7 +1,9 @@
 <?php include '../controller/conexao.php';
 
-    $query = "SELECT * FROM agendados"; 
-  $res = mysqli_query($conn, $query);
+    $query = "SELECT * FROM agendados";
+	$lis = new conecta();
+    $res = $lis->consult($query);
+  
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

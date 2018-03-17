@@ -73,7 +73,8 @@
     </thead>
     <tbody>
       <?php  $query = "SELECT nomeUser, nomeLab, data, horarios, turno FROM agendados";
-             $res = mysqli_query($conn, $query);
+			$lis = new conecta();
+            $res = $lis->consult($query);
 
 while($linha = mysqli_fetch_array($res)){
   

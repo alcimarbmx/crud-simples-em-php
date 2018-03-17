@@ -7,9 +7,10 @@ include ('conexao.php');
 	$funUser = $_REQUEST['funcao'];
 
 	$btn = $_REQUEST['btn'];
-
+	$lis = new conecta();
 	$query = "";
 	$pag = "";
+	
 	switch ($btn) {
 		case "inserir":
 			$query = "INSERT INTO usuario (nome, matricula, funcao) VALUES ('$nomeUser', '$codUser', '$funUser')";
@@ -20,7 +21,7 @@ include ('conexao.php');
 			$pag = "listarUser";
 			break;
 		case "atualizar":
-			$query = "UPDATE  usuario SET nome = '$nomeUser', funcao = '$funUser' WHERE matricula = '$codUser'";
+			$query = "UPDATE usuario SET nome = '$nomeUser', funcao = '$funUser' WHERE matricula = '$codUser'";
 			$pag = "listarUser";
 			break;
 		case "cancelar":
@@ -29,8 +30,7 @@ include ('conexao.php');
 			break;
 	}
 	if(!empty($query)){
-	$operacao = mysqli_query($conn, $query);
-
+	$operacao = $lis->consult($query);
 	if($operacao){ 
 		?>
 		<script>alert("Operação bem sucedida!")</script>
@@ -42,7 +42,4 @@ include ('conexao.php');
 		header("refresh: 0; url=../view/$pag.php");
 	}
 }
-	mysqli_close($conn);
-	
-	?>
-	
+?>	

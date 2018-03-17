@@ -1,5 +1,5 @@
 <?php include '../controller/conexao.php';
-
+	$lab = new conecta();
   if(!empty($_REQUEST)){
     $busca = $_REQUEST['buscar'];
     $query = "SELECT * FROM lab WHERE nome LIKE '%$busca%' or codigo LIKE '%$busca%'";
@@ -9,7 +9,7 @@
 
 
   
-$res = mysqli_query($conn, $query);
+$res = $lab->consult($query);
 
 ?>
 <!DOCTYPE html>

@@ -1,6 +1,6 @@
 <?php
 include 'conexao.php';
-
+	$lis = new conecta();
 	//recebe valores do usuario
 
 if(!empty($_REQUEST['nomeUser'])){
@@ -42,7 +42,8 @@ if(!empty($_REQUEST['nomeUser'])){
 			break;
 	}
 	if(!empty($query)){
-	$operacao = mysqli_query($conn, $query);
+	$operacao = $lis->consult($query);
+
 
 	if($operacao){ 
 		?>
@@ -55,7 +56,7 @@ if(!empty($_REQUEST['nomeUser'])){
 		header("refresh: 0; url=../view/$pag.php");
 	}
 }
-	mysqli_close($conn);
+	
 	
 	?>
 	
