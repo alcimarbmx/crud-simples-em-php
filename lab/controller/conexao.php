@@ -6,15 +6,15 @@ class conecta{
     private $pass;
     private $bd;
 	private $conn;
-        //Metodos
-        function __construct(){
-            $this->host = "localhost";
-            $this->user = "root";
-            $this->pass = "";
-            $this->bd = "laboratorio";
 
-            $this->conn = mysqli_connect($this->host, $this->user, $this->pass, $this->bd); 
-		}
+    function __construct(){
+        $this->host = "localhost";
+        $this->user = "root";
+        $this->pass = "";
+        $this->bd = "laboratorio3";
+
+        $this->conn = mysqli_connect($this->host, $this->user, $this->pass, $this->bd); 
+	}
 		
 	function consult($query){	
 		return mysqli_query($this->conn, $query);

@@ -2,9 +2,9 @@
 	$lab = new conecta();
   if(!empty($_REQUEST)){
     $busca = $_REQUEST['buscar'];
-    $query = "SELECT * FROM lab WHERE nome LIKE '%$busca%' or codigo LIKE '%$busca%'";
+    $query = "SELECT * FROM laboratorio WHERE nome LIKE '%$busca%' or codigo LIKE '%$busca%'";
   }else{
-    $query = "SELECT * FROM lab";
+    $query = "SELECT * FROM laboratorio";
   }
 
 

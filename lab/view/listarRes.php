@@ -1,6 +1,9 @@
 <?php include '../controller/conexao.php';
 
-    $query = "SELECT * FROM agendados";
+    //$query = "SELECT * FROM agendados";
+	$query = "SELECT a.nome AS usuario, a.matricula, b.nome, b.codigo, c.id, c.data, c.horario, c.turno, c.reservado_em FROM usuario AS a, laboratorio AS b, reserva AS c WHERE b.codigo=c.fk_codigo AND a.matricula=c.fk_matricula";
+	//INNER JOIN usuario u ON u.matricula=c.matricula 
+	//";
 	$lis = new conecta();
     $res = $lis->consult($query);
   
@@ -78,6 +81,7 @@
         <th>data</th> 
         <th>horarios</th> 
         <th>turno</th>
+		<th>reservado em</th>
         <th>Excluir</th>
       </tr>
     </thead>
@@ -87,13 +91,14 @@
 //nomeUser, codUser, nomeLab, codLab, data, horarios, turno
 while($linha = mysqli_fetch_array($res)){
 echo "<tr><td>".$linha['id']."</td>";
-echo "<td>".$linha['nomeUser']."</td>";
-echo "<td>".$linha['codUser']."</td>";
-echo "<td>".$linha['nomeLab']."</td>";
-echo "<td>".$linha['codLab']."</td>";
+echo "<td>".$linha['usuario']."</td>";
+echo "<td>".$linha['matricula']."</td>";
+echo "<td>".$linha['nome']."</td>";
+echo "<td>".$linha['codigo']."</td>";
 echo "<td>".$linha['data']."</td>";
-echo "<td>".$linha['horarios']."</td>";
+echo "<td>".$linha['horario']."</td>";
 echo "<td>".$linha['turno']."</td>";
+echo "<td>".$linha['reservado_em']."</td>";
 echo "<td><a href=\"../controller/controllerRes.php?btn=deletar&id=$linha[id]\"onClick=\"return confirm('Tem certeza que deseja excluir?')\"><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
 /*
 echo "<td><a href=\"verLab.php?codigo=$linha[codigo]&nome=$linha[nome]\"<span class='glyphicon glyphicon-eye-open'></span></a></td>";

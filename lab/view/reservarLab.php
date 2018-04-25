@@ -1,6 +1,6 @@
 <?php include '../controller/conexao.php';
 	$lis = new conecta();
-    $queryLab = "SELECT * FROM lab";
+    $queryLab = "SELECT * FROM laboratorio";
     $queryUser = "SELECT * FROM usuario";
 
 $resLab = $lis->consult($queryLab);
@@ -78,53 +78,54 @@ $resUser = $lis->consult($queryUser);
         <div class="container">
 
           <!--campo de nome de usuario-->
+		  <!--
         <label for="nomeUser" class="only">Nome do usuário</label>
         <select name="nomeUser" id="nome" class="form-control" required>
-          <option value=""></option>
+          <option value=""></option>-->
 <?php 
-  $varUser = array(0);
+  /*$varUser = array(0);
   $u = 0;
   while($user = mysqli_fetch_array($resUser)){
       echo "<option value='$user[nome]'>$user[nome]</option>";
       $varUser[$u] = $user[matricula];
       $u++;
-    }
+    }*/
 ?>
-        </select>
+       <!-- </select> -->
         <!--campo de matricula de usuario-->
         <label for="matricula" class="only">Matrícula</label>
         <select name="matricula" id="matricula" class="form-control" required>
           <option value=""></option>
   <?php 
-  $i = 0;
-  while($i < count($varUser)){
-  echo "<option value='$varUser[$i]'>$varUser[$i]</option>";
-  $i++;
+    while($user = mysqli_fetch_array($resUser)){
+      echo "<option value='$user[matricula]'>$user[matricula]</option>";
 }
  ?>
 </select>
 <!--campo de nome de laboratorio-->
-        <label for="nomeLab" class="only">Nome do laboratório</label>
+        <!--<label for="nomeLab" class="only">Nome do laboratório</label>
 <select name="nomeLab" id="nomeLab" class="form-control" required>
-          <option value=""></option>
+          <option value=""></option>-->
 <?php 
-  $varLab = array(0);
+  /*$varLab = array(0);
   $u = 0;
   while($lab = mysqli_fetch_array($resLab)){
   echo "<option value='$lab[nome]'>$lab[nome]</option>";
   $varLab[$u] = $lab[codigo];
   $u++;
-  }  
+  } */ 
 ?>
-</select>
+<!--</select>-->
 <!--campo de codigo do laboratorio-->
         <label for="codigo" class="only">Código</label>
 <select name="codigo" id="codigo" class="form-control" required>
           <option value=""></option>
-<?php $i = 0;
-  while($i < count($varLab)){
-  echo "<option value='$varLab[$i]'>$varLab[$i]</option>";
-  $i++;}
+<?php //$u = 0;
+  while($lab = mysqli_fetch_array($resLab)){
+  echo "<option value='$lab[codigo]'>$lab[codigo]</option>";
+  //$varLab[$u] = $lab[codigo];
+  //$u++;
+  }
 ?>
 </select>
         <label for="data" class="only">Data</label>

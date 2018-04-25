@@ -3,10 +3,10 @@ include 'conexao.php';
 	$lis = new conecta();
 	//recebe valores do usuario
 
-if(!empty($_REQUEST['nomeUser'])){
-	$nomeUser = $_REQUEST['nomeUser'];
+if(!empty($_REQUEST['matricula'])){
+	//$nomeUser = $_REQUEST['nomeUser'];
 	$codUser = $_REQUEST['matricula'];
-	$nomeLab = $_REQUEST['nomeLab'];
+	//$nomeLab = $_REQUEST['nomeLab'];
 	$codLab = $_REQUEST['codigo'];
 	$data = $_REQUEST['data'];
 	$hr = "";
@@ -21,10 +21,12 @@ if(!empty($_REQUEST['nomeUser'])){
 
 	$query = "";
 	$pag = "";
+	/*
+	INSERT INTO `agendados` (`id`, `data`, `horarios`, `turno`, `fk_user`, `fk_lab`) VALUES ('12', '12/12/2018', '1', 'noite', '2016', '24');
+	*/
 	switch ($btn) {
 		case "inserir":
-			$query = "INSERT INTO agendados(nomeUser, codUser, nomeLab, codLab, data, horarios, turno) VALUES (
-    '$nomeUser', '$codUser', '$nomeLab', '$codLab', '$data', '$hr', '$turno')";
+			$query = "INSERT INTO reserva(fk_matricula, fk_codigo, data, horario, turno, reservado_em) VALUES ('$codUser', '$codLab', '$data', '$hr', '$turno', NOW())";
 			$pag = "reservarLab";
 			break;
 		case "deletar":

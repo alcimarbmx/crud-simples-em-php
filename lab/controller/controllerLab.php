@@ -10,15 +10,15 @@
 	$pag = "";
 	switch ($btn) {
 		case "inserir":
-			$query = "INSERT INTO lab (codigo, nome) VALUES ('$codLab', '$nomeLab')";
+			$query = "INSERT INTO laboratorio (codigo, nome) VALUES ('$codLab', '$nomeLab')";
 			$pag = "inserirLab";
 			break;
 		case "deletar":
-			$query = "DELETE FROM lab WHERE codigo='$codLab'";
+			$query = "DELETE FROM laboratorio WHERE codigo='$codLab'";
 			$pag = "listarLab";
 			break;
 		case "atualizar":
-			$query = "UPDATE lab SET nome='$nomeLab' WHERE codigo ='$codLab'";
+			$query = "UPDATE laboratorio SET nome='$nomeLab' WHERE codigo ='$codLab'";
 			$pag = "listarLab";
 			break;
 		case "cancelar":
