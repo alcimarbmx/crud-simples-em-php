@@ -1,5 +1,6 @@
 <?php 
 include '../controller/conexao.php';
+$title = "Situação do Usuário";
 include_once 'includes/header.php';
 
 if(!empty($_REQUEST)){

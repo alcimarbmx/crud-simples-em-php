@@ -1,4 +1,6 @@
-<?php include_once 'includes/header.php'; ?>
+<?php 
+  $title = "Inserir laboratório";
+  include_once 'includes/header.php'; ?>
      
       <form class="form" method="get" action="../controller/controllerLab.php">
         <h2 class="form">Laboratório</h2>

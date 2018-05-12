@@ -10,7 +10,7 @@
   
 $res = $lab->consult($query);
 
-
+$title = "Listar laboratórios";
 include_once 'includes/header.php';
 
 ?>

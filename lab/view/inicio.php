@@ -1,4 +1,6 @@
-<?php include '../controller/conexao.php'; 
+<?php include '../controller/conexao.php';
+
+    $title = "Início"; 
   include_once 'includes/header.php';
 ?>
 

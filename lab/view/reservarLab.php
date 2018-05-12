@@ -1,4 +1,5 @@
 <?php include '../controller/conexao.php';
+$title = "Reservar";
       include_once 'includes/header.php';
 	$lis = new conecta();
     $queryLab = "SELECT * FROM laboratorio";

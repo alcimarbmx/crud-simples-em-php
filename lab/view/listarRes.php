@@ -6,6 +6,7 @@
 	//";
 	$lis = new conecta();
     $res = $lis->consult($query);
+    $title = "Reservados";
 include_once 'includes/header.php';
   
 ?>

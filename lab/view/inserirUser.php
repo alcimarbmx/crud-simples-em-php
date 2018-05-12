@@ -1,4 +1,6 @@
-<?php include_once 'includes/header.php'; ?> 
+<?php 
+$title = "Inserir usuário";
+include_once 'includes/header.php'; ?> 
 
 <form class="form" method="post" action="../controller/controllerUser.php">
         

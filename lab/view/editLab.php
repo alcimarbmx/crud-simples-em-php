@@ -6,7 +6,7 @@ if(!empty($_REQUEST)){
   $nomeLab = "";
   $codLab = "";
 }
-$title = 'Lab';
+$title = 'Editar laboratório';
 include_once 'includes/header.php'; //header da pagina
 
 ?>

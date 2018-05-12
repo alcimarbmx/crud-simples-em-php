@@ -1,4 +1,5 @@
 <?php include '../controller/conexao.php';
+$title = "Usuários";
       include_once 'includes/header.php';
   if(!empty($_REQUEST)){
     $busca = $_REQUEST['buscar'];
