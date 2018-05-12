@@ -20,14 +20,6 @@ class conecta{
 		return mysqli_query($this->conn, $query);
 	}
 }
-		
-		
-		//$conn = @mysqli_connect("localhost", "root", "", "laboratorio") or die("Erro: ".mysqli_connect_error());	
-			
-		
-	//$conn = @mysqli_connect("localhost", "root", "", "laboratorio") or die("Erro: ".mysqli_connect_error());
 
-	//$conn = mysqli_connect("localhost", "root", "", "laboratorio");
-
-	?>
+?>
 	
