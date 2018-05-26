@@ -1,3 +1,7 @@
+<?php 
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -30,17 +34,21 @@
             </button>
               <a class="navbar-brand" href="inicio.php">Project Web</a>
             </div>
+      <?php if(isset($_SESSION['user'])):?>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li><a href="inicio.php">Início</a></li>             
                 <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
+        
                   <ul class="dropdown-menu">
                     <li><a href="listarUser.php">Listar usuários</a></li>
                     <li><a href="inserirUser.php">Inserir  usuário</a></li>
                   </ul>
+
                   <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Laboratório<span class="caret"></span></a>
+
                   <ul class="dropdown-menu">
                     <li><a href="listarLab.php">Listar laboratórios</a></li>
                     <li><a href="inserirLab.php">Inserir</a></li>
@@ -48,8 +56,21 @@
                     <li><a href="listarRes.php">Laboratórios reservados</a></li>
                   </ul>
                 </li>
+
+              </ul>
+            </div> 
+      <?php else:?>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                
+                <li><a href="listarUser.php">Usuários</a></li>
+                <li><a href="listarLab.php">Laboratórios</a></li>
+                <li><a href="listarRes.php">Reservados</a></li>             
               </ul>
             </div>
+      <?php endif;?>
+
+
           </div>
         </nav>
       </div>

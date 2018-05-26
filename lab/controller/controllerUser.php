@@ -1,19 +1,20 @@
 <?php
-include ('conexao.php');
+//include 'conect.php';
+include_once 'conexao.php';
 
 	//recebe valores do usuario
 	$nomeUser = $_REQUEST['nome'];
 	$codUser = $_REQUEST['matricula'];
+	$email = $_REQUEST['email'];
 	$funUser = $_REQUEST['funcao'];
 
 	$btn = $_REQUEST['btn'];
-	$lis = new conecta();
 	$query = "";
 	$pag = "";
 	
 	switch ($btn) {
 		case "inserir":
-			$query = "INSERT INTO usuario (nome, matricula, funcao) VALUES ('$nomeUser', '$codUser', '$funUser')";
+			$query = "INSERT INTO usuario (nome, matricula, email, funcao) VALUES ('$nomeUser', '$codUser', '$email', '$funUser')";
 			$pag = "inserirUser";
 			break;
 		case "deletar":
@@ -30,7 +31,7 @@ include ('conexao.php');
 			break;
 	}
 	if(!empty($query)){
-	$operacao = $lis->consult($query);
+	$operacao = mysqli_query($conn, $query);
 	if($operacao){ 
 		?>
 		<script>alert("Operação bem sucedida!")</script>

@@ -1,25 +1,44 @@
 <?php
+/*
+$conectando = new conecta();
+$query = "";
 
-class conecta{	
-	private $host;
-	private $user;
-    private $pass;
-    private $bd;
-	private $conn;
+$conectando->consulta($query);
+*/
 
-    function __construct(){
-        $this->host = "localhost";
-        $this->user = "root";
-        $this->pass = "";
-        $this->bd = "laboratorio3";
+$host = "localhost";
+$user = "root";
+$pass = "";
+$bd = "laboratorio3";
 
-        $this->conn = mysqli_connect($this->host, $this->user, $this->pass, $this->bd); 
+    $conn = @mysqli_connect($host, $user, $pass, $bd) or die("Erro de conexão: ".mysqli_connect_error());
+
+    mysqli_set_charset($conn, "utf8");
+
+
+
+
+/*
+	$host = "localhost";
+    $user = "root";
+    $pass = "";
+    $bd = "laboratorio3";
+    
+
+    $conn =  mysqli_connect($host, $user, $pass, $bd);
+
+
+if($conn){}
+	else{
+	echo "Error: ".mysqli_connect_errno($conn);
 	}
 		
-	function consult($query){	
-		return mysqli_query($this->conn, $query);
-	}
-}
+	function consulta($query){	
 
+		return mysqli_query($conn, $query);
+
+	}
+
+*/
 ?>
 	

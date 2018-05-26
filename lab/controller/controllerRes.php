@@ -1,8 +1,7 @@
 <?php
-include 'conexao.php';
-	$lis = new conecta();
+//include 'conect.php';
 	//recebe valores do usuario
-
+include_once 'conexao.php';
 if(!empty($_REQUEST['matricula'])){
 	//$nomeUser = $_REQUEST['nomeUser'];
 	$codUser = $_REQUEST['matricula'];
@@ -12,7 +11,7 @@ if(!empty($_REQUEST['matricula'])){
 	$hr = "";
 	foreach($_REQUEST['horario'] as $key => $value){
 	//$horarios[$key] = $value;
-	$hr = $hr."$value,";
+		$hr = $hr."$value,";
 } 
 
 	$turno = $_REQUEST['turno'];
@@ -31,7 +30,7 @@ if(!empty($_REQUEST['matricula'])){
 			break;
 		case "deletar":
 		$id = $_REQUEST['id'];
-			$query = "DELETE FROM agendados WHERE id=$id";
+			$query = "DELETE FROM reserva WHERE id=$id";
 			$pag = "listarRes";
 			break;
 		/*case "atualizar":
@@ -44,7 +43,7 @@ if(!empty($_REQUEST['matricula'])){
 			break;
 	}
 	if(!empty($query)){
-	$operacao = $lis->consult($query);
+	$operacao = mysqli_query($conn, $query);
 
 
 	if($operacao){ 

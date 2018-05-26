@@ -1,4 +1,7 @@
-<?php include '../controller/conexao.php';
+<?php 
+      include '../controller/conexao.php';
+     // include '../controller/conect.php';
+
 $title = "Usuários";
       include_once 'includes/header.php';
   if(!empty($_REQUEST)){
@@ -7,8 +10,8 @@ $title = "Usuários";
   }else{
     $query = "SELECT * FROM usuario";
   }
-	$lis = new conecta();
-    $res = $lis->consult($query);
+	
+    $res = mysqli_query($conn, $query);
 
 ?>
  
@@ -29,8 +32,8 @@ $title = "Usuários";
     </thead>
     <tbody>
       <?php  
-
-while($linha = mysqli_fetch_array($res)){
+if(isset($_SESSION['user'])):
+  while($linha = mysqli_fetch_array($res)):
         echo "<tr><td>".$linha['nome']."</td>";
         echo "<td>".$linha['matricula']."</td>";
         echo "<td>".$linha['funcao']."</td>";
@@ -38,7 +41,20 @@ while($linha = mysqli_fetch_array($res)){
         echo "<td><a href=\"editUser.php?btn=atualizar&nome=$linha[nome]&matricula=$linha[matricula]&funcao=$linha[funcao]\"><span class='glyphicon glyphicon-edit'></span></a></td>";
         echo "<td><a href=\"../controller/controllerUser.php?btn=deletar&nome=$linha[nome]&matricula=$linha[matricula]&funcao=$linha[funcao]\"onClick=\"return confirm('Tem certeza que deseja excluir?')\"><span class='glyphicon glyphicon-trash'></span></a></td></tr>";
         
- } ?>
+endwhile;
+else:
+  while($linha = mysqli_fetch_array($res)):
+        echo "<tr><td>".$linha['nome']."</td>
+        <td>".$linha['matricula']."</td>
+        <td>".$linha['funcao']."</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        </tr>";
+        
+endwhile;
+endif;
+?>
     </tbody>
   </table>
 

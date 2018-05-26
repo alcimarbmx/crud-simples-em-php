@@ -8,6 +8,9 @@ include_once 'includes/header.php'; ?>
   <label for="nome" class="only">Nome</label>
     <input type="text" name="nome" id="nome" class="form-control" required autofocus>
 
+  <label for="email" class="only">E-mail</label>
+    <input type="email" name="email" id="email" class="form-control" required autofocus>
+
   <label for="matricula" class="only">Matrícula</label>
     <input type="number" name="matricula" id="matricula" class="form-control" required autofocus>
 

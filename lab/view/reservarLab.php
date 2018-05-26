@@ -1,12 +1,14 @@
-<?php include '../controller/conexao.php';
-$title = "Reservar";
+<?php 
+      include '../controller/conexao.php';
+
+      $title = "Reservar";
       include_once 'includes/header.php';
-	$lis = new conecta();
+      
     $queryLab = "SELECT * FROM laboratorio";
     $queryUser = "SELECT * FROM usuario";
 
-$resLab = $lis->consult($queryLab);
-$resUser = $lis->consult($queryUser);
+$resLab = mysqli_query($conn, $queryLab);
+$resUser = mysqli_query($conn, $queryUser);
 
 ?>
 
@@ -25,6 +27,7 @@ $resUser = $lis->consult($queryUser);
       $u++;
     }*/
 ?>
+<form action="../controller/controllerRes.php" method="POST">
        <!-- </select> -->
         <!--campo de matricula de usuario-->
         <label for="matricula" class="only">Matrícula</label>
@@ -112,7 +115,7 @@ $resUser = $lis->consult($queryUser);
 
       </div>
       </div>
-      </div>
+    
       </form>
   
 <?php include_once 'includes/footer.php'; ?>

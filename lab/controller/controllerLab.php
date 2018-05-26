@@ -1,10 +1,11 @@
 <?php
-	include('conexao.php');
-	$lab = new conecta();
-	$nomeLab = $_REQUEST['nome'];
-	$codLab = $_REQUEST['codigo'];
+	//include 'conect.php';
+	include_once 'conexao.php';
+	session_start();
+	$nomeLab = mysqli_escape_string($conn, $_REQUEST['nome']);
+	$codLab = mysqli_escape_string($conn, $_REQUEST['codigo']);
 	
-	$btn = $_REQUEST['btn'];
+	$btn = mysqli_escape_string($conn, $_REQUEST['btn']);
 
 	$query = "";
 	$pag = "";
@@ -25,19 +26,28 @@
 			header("refresh: 0; url=../view/listarLab.php");
 			break;
 			}
-if(!empty($query)){
-	$operacao = $lab->consult($query);
-	if($operacao){ 
-		?>
-		<script>alert("Operação bem sucedida!")</script>
-		<?php 
-		header("refresh: 0; url=../view/$pag.php");
-	}else{ ?>
-		<script>alert("Operação mal sucedida! Tente novamente.")</script>
-	<?php 
-		header("refresh: 0; url=../view/$pag.php");
-	}
-}
+			if(isset($_SESSION['user']) && isset($_SESSION['mat'])):
+				if(!empty($query)):
+					$operacao = mysqli_query($conn, $query);
+				endif;
+
+				if($operacao): 
+					?>
+					<script>alert("Operação bem sucedida!")</script>
+					<?php 
+					header("refresh: 0; url=../view/$pag.php");
+					else: ?>
+					<script>alert("Operação mal sucedida! Tente novamente.")</script>
+				<?php 
+					header("refresh: 0; url=../view/$pag.php");
+					endif;
+				
+			else:
+				?>
+					<script>alert("Você não tem autorização! Faça seu login.")</script>
+			<?php
+				header('location: ../view/login.php');
+			endif;
 	//mysqli_close($conn);
 	//header("refresh: 0; url=inicio.php");
 	?>

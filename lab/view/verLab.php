@@ -1,5 +1,6 @@
 <?php 
       include '../controller/conexao.php';
+
       $title = "Situação do laboratório";
       include_once 'includes/header.php'; 
 
