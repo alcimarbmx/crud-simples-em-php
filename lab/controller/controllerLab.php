@@ -42,8 +42,7 @@
 					header("refresh: 0; url=../view/$pag.php");
 					endif;
 				
-			else:
-				?>
+			else:?>
 					<script>alert("Você não tem autorização! Faça seu login.")</script>
 			<?php
 				header('location: ../view/login.php');

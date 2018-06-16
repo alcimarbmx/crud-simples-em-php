@@ -6,7 +6,7 @@ $title = "Usuários";
       include_once 'includes/header.php';
   if(!empty($_REQUEST)){
     $busca = $_REQUEST['buscar'];
-    $query = "SELECT * FROM usuario WHERE nome LIKE '%$busca%' or matricula LIKE '%$busca%'";
+    $query = "SELECT * FROM usuario WHERE nome LIKE '$busca%' or matricula LIKE '$busca%'";
   }else{
     $query = "SELECT * FROM usuario";
   }
