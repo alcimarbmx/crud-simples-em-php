@@ -4,7 +4,7 @@
 	session_start();
 	$nomeLab = mysqli_escape_string($conn, $_REQUEST['nome']);
 	$codLab = mysqli_escape_string($conn, $_REQUEST['codigo']);
-	
+
 	$btn = mysqli_escape_string($conn, $_REQUEST['btn']);
 
 	$query = "";
@@ -23,29 +23,33 @@
 			$pag = "listarLab";
 			break;
 		case "cancelar":
-			header("refresh: 0; url=../view/listarLab.php");
+			$pag = "listarLab";
+			//header("refresh: 0; url=../view/listarLab.php");
 			break;
 			}
 			if(isset($_SESSION['user']) && isset($_SESSION['mat'])):
 				if(!empty($query)):
 					$operacao = mysqli_query($conn, $query);
+				else:
+					$operacao = false;
 				endif;
 
-				if($operacao): 
+				if($operacao):
 					?>
 					<script>alert("Operação bem sucedida!")</script>
-					<?php 
+					<?php
 					header("refresh: 0; url=../view/$pag.php");
 					else: ?>
-					<script>alert("Operação mal sucedida! Tente novamente.")</script>
-				<?php 
+					<!--<script>alert("Operação mal sucedida! Tente novamente.")</script>
+					-->
+				<?php
 					header("refresh: 0; url=../view/$pag.php");
 					endif;
-				
+
 			else:?>
 					<script>alert("Você não tem autorização! Faça seu login.")</script>
 			<?php
-				header('location: ../view/login.php');
+				//header('location: ../view/login.php');
 			endif;
 	//mysqli_close($conn);
 	//header("refresh: 0; url=inicio.php");

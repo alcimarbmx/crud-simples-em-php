@@ -1,9 +1,8 @@
-<?php 
-      include '../controller/conexao.php';
+<?php
+    include '../controller/conexao.php';
+    $title = "Reservar";
+    include_once 'includes/header.php';
 
-      $title = "Reservar";
-      include_once 'includes/header.php';
-      
     $queryLab = "SELECT * FROM laboratorio";
     $queryUser = "SELECT * FROM usuario";
 
@@ -18,7 +17,7 @@ $resUser = mysqli_query($conn, $queryUser);
         <label for="nomeUser" class="only">Nome do usuário</label>
         <select name="nomeUser" id="nome" class="form-control" required>
           <option value=""></option>-->
-<?php 
+<?php
   /*$varUser = array(0);
   $u = 0;
   while($user = mysqli_fetch_array($resUser)){
@@ -33,7 +32,7 @@ $resUser = mysqli_query($conn, $queryUser);
         <label for="matricula" class="only">Matrícula</label>
         <select name="matricula" id="matricula" class="form-control" required>
           <option value=""></option>
-  <?php 
+  <?php
     while($user = mysqli_fetch_array($resUser)){
       echo "<option value='$user[matricula]'>$user[matricula]</option>";
 }
@@ -43,14 +42,14 @@ $resUser = mysqli_query($conn, $queryUser);
         <!--<label for="nomeLab" class="only">Nome do laboratório</label>
 <select name="nomeLab" id="nomeLab" class="form-control" required>
           <option value=""></option>-->
-<?php 
+<?php
   /*$varLab = array(0);
   $u = 0;
   while($lab = mysqli_fetch_array($resLab)){
   echo "<option value='$lab[nome]'>$lab[nome]</option>";
   $varLab[$u] = $lab[codigo];
   $u++;
-  } */ 
+  } */
 ?>
 <!--</select>-->
 <!--campo de codigo do laboratorio-->
@@ -67,7 +66,7 @@ $resUser = mysqli_query($conn, $queryUser);
 </select>
   <label for="data" class="only">Data</label>
     <input type="date" name="data" id="data" class="form-control" required autofocus>
-        
+
   <label for="horario" class="only">Horários</label>
     <div class="form-control">
     <div class="checkbox-inline">
@@ -91,11 +90,11 @@ $resUser = mysqli_query($conn, $queryUser);
   </div>
 	  <label for="turno" class="only">Turno</label>
 	  <div class="form-control">
-        
+
 		<input type="radio" name="turno" value="Manhã">Manhã
 		<input type="radio" name="turno" value="Tarde">Tarde
 		<input type="radio" name="turno" value="Noite">Noite
-        
+
 		</div>
 		<!--
 		<select class="form-control" name="turno" id="turno" required>
@@ -107,7 +106,7 @@ $resUser = mysqli_query($conn, $queryUser);
 		-->
       <br>
 
-       
+
         <div class="btn-group btn-group-justified">
       <div class="btn-group">
         <button class="btn btn-primary" type="submit" name="btn" value="inserir">
@@ -115,7 +114,7 @@ $resUser = mysqli_query($conn, $queryUser);
 
       </div>
       </div>
-    
+
       </form>
-  
+
 <?php include_once 'includes/footer.php'; ?>

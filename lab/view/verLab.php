@@ -1,23 +1,22 @@
-<?php 
+<?php
       include '../controller/conexao.php';
-
       $title = "Situação do laboratório";
-      include_once 'includes/header.php'; 
+      include_once 'includes/header.php';
 
 $query = "";
 if(!empty($_REQUEST)){
 	$nomeLab = $_REQUEST['nome'];
 	$codLab =  $_REQUEST['codigo'];
-	
+
 }else{
 	$nomeLab = "";
 	$codLab = "";
 }
 
 ?>
-     
+
 <form class="form">
-        
+
 <h2 class="form">Laboratório</h2>
   <label for="nome" class="only">Nome</label>
     <input type="text" name="nome" id="nome" class="form-control" <?php echo "value='$nomeLab' readonly";?> autofocus>

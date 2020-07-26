@@ -1,4 +1,4 @@
-<?php 
+<?php
   session_start();
 ?>
 
@@ -14,7 +14,7 @@
 
     <title><?php echo $title; ?></title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    
+
     <link href="../css/carousel.css" rel="stylesheet">
   </head>
 <!-- NAVBAR
@@ -36,10 +36,10 @@
             </div>
       <?php if(isset($_SESSION['user'])):?>
             <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">             
+              <ul class="nav navbar-nav">
                 <li class="dropdown">
                   <a href="inserirUser.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuário<span class="caret"></span></a>
-        
+
                   <ul class="dropdown-menu">
                     <li><a href="listarUser.php">Listar usuários</a></li>
                     <li><a href="inserirUser.php">Inserir  usuário</a></li>
@@ -52,7 +52,7 @@
                     <li><a href="listarLab.php">Listar laboratórios</a></li>
                     <li><a href="inserirLab.php">Inserir</a></li>
                     <li><a href="reservarLab.php">Reservar laboratório</a></li>
-                    <li><a href="listarRes.php">Laboratórios reservados</a></li>                   
+                    <li><a href="listarRes.php">Laboratórios reservados</a></li>
                   </ul>
                   <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION['user']); ?><span class="caret"></span></a>
@@ -63,30 +63,21 @@
                 </li>
 
               </ul>
-            </div> 
+            </div>
       <?php else:?>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                
                 <li><a href="listarUser.php">Usuários</a></li>
                 <li><a href="listarLab.php">Laboratórios</a></li>
-                <li><a href="listarRes.php">Reservados</a></li> 
-                
-                
+                <li><a href="listarRes.php">Reservados</a></li>
                 <li><a href="../view/login.php">Entrar</a></li>
-
-                           
               </ul>
             </div>
-            
-             
       <?php endif;?>
-
-
           </div>
         </nav>
       </div>
     </div>
 
 <hr class="featurette-divider">
-       <div class="container"> 
+       <div class="container">

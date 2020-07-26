@@ -1,41 +1,39 @@
-<?php 
+<?php
 	$title = "Entrar";
 
 	require_once 'includes/header.php';
 	require_once '../controller/conexao.php';
 
-	//session_start();
 
-if(isset($_POST['btn_login'])):
-
-	$email = mysqli_escape_string($conn, $_POST['email']);
-	$matricula = mysqli_escape_string($conn, $_POST['matricula']);
-
-	$sql = "SELECT nome, matricula FROM usuario WHERE email='$email' AND matricula='$matricula'";
-	$res = mysqli_query($conn, $sql);
-	if(mysqli_num_rows($res) > 0):
-		$linha = mysqli_fetch_array($res);
-		$_SESSION['user'] = $linha['nome'];
-		$_SESSION['mat'] = $linha['matricula'];
-
+	if(!empty($_SESSION)):
 		header("location: inicio.php");
-		//var_dump($_SESSION);
-		
+	else:
+		if(isset($_POST['btn_login'])):
+
+			$email = mysqli_escape_string($conn, $_POST['email']);
+			$matricula = mysqli_escape_string($conn, $_POST['matricula']);
+
+			$sql = "SELECT nome, matricula FROM usuario WHERE email='$email' AND matricula='$matricula'";
+			$res = mysqli_query($conn, $sql);
+			if(mysqli_num_rows($res) > 0):
+				$linha = mysqli_fetch_array($res);
+				$_SESSION['user'] = $linha['nome'];
+				$_SESSION['mat'] = $linha['matricula'];
+				header("location: inicio.php");
+		endif;
 	endif;
-
 endif;
-
 ?>
 <link rel="stylesheet" type="text/css" href="../css/signin.css">
 
 <div class="text-center">
-<form class="form-inline" action="" method="post">
-	
-	<div class="form-group">
+<form class="form-group" action="" method="post">
+
+	<div class="form-inline">
 		<input class="form-control" type="email" name="email" id="email" placeholder="Entre com seu e-mail">
 	</div><br>
 
-	<div class="form-group">
+	<div class="form-inline">
 		<input class="form-control" type="password" name="matricula" id="matricula" placeholder="Matrícula">
 	</div><br>
 

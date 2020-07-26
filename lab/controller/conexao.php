@@ -9,7 +9,7 @@ $conectando->consulta($query);
 $host = "localhost";
 $user = "root";
 $pass = "";
-$bd = "laboratorio3";
+$bd = "laboratorio";
 
     $conn = @mysqli_connect($host, $user, $pass, $bd) or die("Erro de conexão: ".mysqli_connect_error());
 
@@ -23,7 +23,7 @@ $bd = "laboratorio3";
     $user = "root";
     $pass = "";
     $bd = "laboratorio3";
-    
+
 
     $conn =  mysqli_connect($host, $user, $pass, $bd);
 
@@ -32,8 +32,8 @@ if($conn){}
 	else{
 	echo "Error: ".mysqli_connect_errno($conn);
 	}
-		
-	function consulta($query){	
+
+	function consulta($query){
 
 		return mysqli_query($conn, $query);
 
@@ -41,4 +41,3 @@ if($conn){}
 
 */
 ?>
-	
