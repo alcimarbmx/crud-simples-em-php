@@ -1,7 +1,7 @@
-<?php 
+<?php
       include '../controller/conexao.php';
 
-      $title = "Situação do Usuário";  
+      $title = "Situação do Usuário";
       include_once 'includes/header.php';
 
 if(!empty($_REQUEST)){
@@ -14,11 +14,11 @@ if(!empty($_REQUEST)){
 	$funUser = "";
 
 }
-
+#comertario php teste push
 ?>
-   
+
 <form class="form" method="post" action="#">
-        
+
 <h2 class="form">Usuário</h2>
   <label for="nome" class="only">Nome</label>
     <input type="text" name="nome" id="nome" class="form-control" <?php echo "value='$nomeUser' readonly";?> autofocus>
