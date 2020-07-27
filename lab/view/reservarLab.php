@@ -26,93 +26,68 @@ $resUser = mysqli_query($conn, $queryUser);
       $u++;
     }*/
 ?>
-<form action="../controller/controllerRes.php" method="POST">
+<form class="form-inline" action="../controller/controllerRes.php" method="POST">
        <!-- </select> -->
         <!--campo de matricula de usuario-->
-        <label for="matricula" class="only">Matrícula</label>
-        <select name="matricula" id="matricula" class="form-control" required>
-          <option value=""></option>
+        <label for="matricula" class="control-label col-sm-1">Matrícula</label>
+<div class="control-label col-sm-2">
+        <select name="matricula" id="matricula"  required>
+          <option  value=""></option>
   <?php
-    while($user = mysqli_fetch_array($resUser)){
+    while($user = mysqli_fetch_array($resUser)):
       echo "<option value='$user[matricula]'>$user[matricula]</option>";
-}
+    endwhile;
  ?>
-</select>
-<!--campo de nome de laboratorio-->
-        <!--<label for="nomeLab" class="only">Nome do laboratório</label>
-<select name="nomeLab" id="nomeLab" class="form-control" required>
-          <option value=""></option>-->
-<?php
-  /*$varLab = array(0);
-  $u = 0;
-  while($lab = mysqli_fetch_array($resLab)){
-  echo "<option value='$lab[nome]'>$lab[nome]</option>";
-  $varLab[$u] = $lab[codigo];
-  $u++;
-  } */
-?>
-<!--</select>-->
+        </select>
+</div>
+
 <!--campo de codigo do laboratorio-->
-        <label for="codigo" class="only">Código</label>
-<select name="codigo" id="codigo" class="form-control" required>
-          <option value=""></option>
+<label for="codigo" class="control-label col-sm-1">Código</label>
+<div class="control-label col-sm-2">
+  <select name="codigo" id="codigo"  required>
+    <option value=""></option>
 <?php //$u = 0;
-  while($lab = mysqli_fetch_array($resLab)){
+  while($lab = mysqli_fetch_array($resLab)):
   echo "<option value='$lab[codigo]'>$lab[codigo]</option>";
   //$varLab[$u] = $lab[codigo];
   //$u++;
-  }
+  endwhile;
 ?>
 </select>
-  <label for="data" class="only">Data</label>
-    <input type="date" name="data" id="data" class="form-control" required autofocus>
+</div>
+  <label for="data" class="control-label col-sm-1">Data</label>
+    <input type="date" name="data" id="data" class="control-label col-sm-2" required autofocus>
 
-  <label for="horario" class="only">Horários</label>
-    <div class="form-control">
-    <div class="checkbox-inline">
-  <label class="checkbox-inline">
+  <!-- <label for="horario" class="control-label col-sm-4">Horários</label>
+-->
+<div class="control-label col-sm-7">
+    <label for="horario"  class="control-label">Horários</label>
+  <label>
     <input type="checkbox" name="horario[]" value="1">1º primeiro</label>
-  <label class="checkbox-inline">
-    <input type="checkbox" name="horario[]" value="2">2º segundo
-  </label>
-  <label class="checkbox-inline">
-    <input type="checkbox" name="horario[]" value="3">3º terceiro
-  </label>
-  <label class="checkbox-inline">
-    <input type="checkbox" name="horario[]" value="4">4º quarto
-  </label>
-  <label class="checkbox-inline">
-    <input type="checkbox" name="horario[]" value="5">5º quinto
-  </label>
-  <label class="checkbox-inline">
+  <label>
+    <input type="checkbox" name="horario[]" value="2">2º segundo</label>
+  <label>
+    <input type="checkbox" name="horario[]" value="3">3º terceiro</label>
+  <label>
+    <input type="checkbox" name="horario[]" value="4">4º quarto</label>
+  <label>
+    <input type="checkbox" name="horario[]" value="5">5º quinto</label>
+  <label>
     <input type="checkbox" name="horario[]" value="6">6º sexto</label>
-  </div>
-  </div>
-	  <label for="turno" class="only">Turno</label>
-	  <div class="form-control">
+</div>
+<div class="control-label col-sm-3">
+	  <label for="turno"  class="control-label">Turno</label>
+
 
 		<input type="radio" name="turno" value="Manhã">Manhã
 		<input type="radio" name="turno" value="Tarde">Tarde
 		<input type="radio" name="turno" value="Noite">Noite
 
 		</div>
-		<!--
-		<select class="form-control" name="turno" id="turno" required>
-          <option value=""></option>
-          <option value="Manhã">Manhã</option>
-          <option value="Tarde">Tarde</option>
-          <option value="Noite">Noite</option>
-        </select>
-		-->
-      <br>
 
-
-        <div class="btn-group btn-group-justified">
-      <div class="btn-group">
+      <div class="control-label col-sm-10">
         <button class="btn btn-primary" type="submit" name="btn" value="inserir">
         <span class="glyphicon glyphicon-ok"></span>Reservar</button>
-
-      </div>
       </div>
 
       </form>
